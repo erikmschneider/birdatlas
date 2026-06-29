@@ -42,7 +42,7 @@ header.mast{padding:30px 0 16px}
 .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
 h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,4.4vw,52px);line-height:1.02;letter-spacing:-.01em;margin:.18em 0 .15em}
 h1 .em{font-style:italic;font-weight:500}
-.sub{max-width:64ch;color:#3c4a43;margin:0}
+.sub{max-width:64ch;color:#3c4a43;margin:0;font-size:14px}
 .statline{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:14px;align-items:baseline}
 .statline .stat{display:flex;gap:8px;align-items:baseline}
 .statline b{font-family:Fraunces,serif;font-weight:600;font-size:22px}
@@ -98,10 +98,11 @@ select.ctl{font:inherit;font-size:14px;padding:8px 30px 8px 11px;border:1px soli
 .mapmetricchip.kind[disabled]:hover{background:var(--paper)}
 .mapmetricchip[aria-pressed=true]{background:var(--metric);border-color:var(--metric);color:#fff}
 svg.usmap{display:block;width:100%;height:auto}
-.st{stroke:var(--paper-2);stroke-width:.6;cursor:pointer;transition:fill .35s ease}
+.st{stroke:var(--paper-2);stroke-width:.6;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .35s ease,stroke .15s ease,stroke-width .15s ease}
 .st:hover{stroke:var(--ink);stroke-width:1.1}
 .st.pinned{stroke:var(--ink);stroke-width:1.6}
 .st.dim{opacity:.5}
+.state-outline{fill:none;stroke:#000;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;pointer-events:none}
 
 /* Territory tiles */
 .terr{display:flex;flex-wrap:wrap;gap:8px;padding:10px 6px 2px;border-top:1px dashed var(--line);margin-top:4px}
@@ -109,6 +110,8 @@ svg.usmap{display:block;width:100%;height:auto}
 .tile{width:96px;cursor:pointer;border-radius:10px;padding:6px;background:transparent;border:1px solid transparent;transition:background .2s}
 .tile:hover,.tile:focus-visible{background:#e4e8da;outline:none}
 .tile.pinned{background:#dfe5d4;border-color:var(--ink)}
+.tile.hovermatch{background:#efe2d8;border-color:#000}
+.tile.hovermatch .tst{stroke:#000!important;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
 .tile svg{display:block;width:100%;height:58px}
 .tile .tn{display:flex;justify-content:space-between;align-items:baseline;margin-top:3px}
 .tile .ab{font-family:'Spline Sans Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.04em}
@@ -181,20 +184,44 @@ svg.usmap{display:block;width:100%;height:auto}
 .abrow .pctval.dim{color:var(--sage);font-weight:400}
 .abhead{display:grid;grid-template-columns:1fr auto auto;gap:10px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--sage);padding:0 2px 6px;border-bottom:1px solid var(--line)}
 .abhead span:not(:first-child){text-align:right;width:46px}
-.unirow{display:grid;grid-template-columns:1fr 38px 58px 56px 56px 56px;gap:10px;align-items:center;padding:7px 2px;border-bottom:1px solid #ece9dd;cursor:pointer}
+.unirow{display:grid;grid-template-columns:minmax(0,3.35fr) minmax(28px,.58fr) minmax(42px,.9fr) minmax(42px,.95fr) minmax(42px,.88fr) minmax(42px,.88fr) minmax(42px,.72fr);gap:8px;align-items:start;padding:7px 2px;border-bottom:1px solid #ece9dd;cursor:pointer}
 .unirow:hover{background:#e6e9db}
-.unihead{display:grid;grid-template-columns:1fr 38px 58px 56px 56px 56px;gap:10px;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--sage);padding:0 2px 6px;border-bottom:1px solid var(--line)}
+.unihead{display:grid;grid-template-columns:minmax(0,3.35fr) minmax(28px,.58fr) minmax(42px,.9fr) minmax(42px,.95fr) minmax(42px,.88fr) minmax(42px,.88fr) minmax(42px,.72fr);gap:8px;font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--sage);padding:0 2px 6px;border-bottom:1px solid var(--line);align-items:end}
 .unihead span:not(:first-child){text-align:center}
-.unirow .namecell{display:flex;flex-direction:column;gap:1px;min-width:0}
-.unirow .namecell .cnrow{display:flex;align-items:baseline;gap:5px}
-.unirow .cn{font-size:12.5px;line-height:1.25}
-.unirow .sn{font-family:Fraunces,serif;font-style:italic;font-size:10.5px;color:var(--sage);line-height:1.2}
-.unirow .uc{text-align:center;font-family:'Spline Sans Mono',monospace;font-size:11.5px}
+.unirow .namecell{display:flex;flex-direction:column;gap:1px;min-width:0;overflow:hidden}
+.unirow .namecell .cnrow{display:flex;align-items:baseline;gap:5px;min-width:0;overflow:hidden}
+.unirow .cn{font-size:12.5px;line-height:1.2;overflow:hidden;white-space:normal;text-overflow:clip;min-width:0;overflow-wrap:anywhere}
+.unirow .sn{font-family:Fraunces,serif;font-style:italic;font-size:10.5px;color:var(--sage);line-height:1.15;overflow:hidden;white-space:normal;text-overflow:clip;min-width:0;overflow-wrap:anywhere}
+.unirow .uc{text-align:center;font-family:'Spline Sans Mono',monospace;font-size:10.75px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .unirow .uc.dim{color:var(--sage)}
 .unirow .uc.yes{color:var(--signal-deep);font-weight:600}
-.unirow .uc.sgcn-yes{font-size:15px;font-weight:700;line-height:1}
-.unirow .uc.esa{font-size:10px}
+.unirow .uc.sgcn-yes{font-size:18px;font-weight:700;line-height:1}
+.unirow .uc.esa{font-size:12px;letter-spacing:-.01em;font-weight:700}
 .unirow .uc.placeholder{color:var(--line)}
+.unihead.speciespanel,.unirow.speciespanel{
+  gap:6px;
+  grid-template-columns:minmax(0,2.45fr) minmax(30px,.42fr) minmax(42px,.62fr) minmax(42px,.62fr) minmax(44px,.7fr) minmax(44px,.7fr) minmax(44px,.7fr);
+}
+.unihead.speciespanel>*,
+.unirow.speciespanel>*{min-width:0}
+.unihead.speciespanel{
+  align-items:end;
+  font-size:8.5px;
+  letter-spacing:.04em;
+}
+.unihead.speciespanel .unisort{
+  font-size:8.5px;
+  line-height:1.15;
+  white-space:normal;
+  text-align:center;
+}
+.unihead.speciespanel .unisort.first{text-align:left}
+.unirow.speciespanel .namecell{
+  display:flex;
+  align-items:flex-start;
+}
+.unirow.speciespanel{align-items:start}
+.unirow.speciespanel .uc{font-size:10.5px}
 .unisort{display:flex;justify-content:center;gap:3px;background:none;border:none;color:var(--sage);font:inherit;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;padding:0;width:100%;align-items:center;position:relative}
 .unisort.first{justify-content:flex-start}
 .unisort:hover{color:var(--ink)}
@@ -216,7 +243,7 @@ svg.usmap{display:block;width:100%;height:auto}
 .nodata-panel{padding:20px 4px;color:var(--sage);font-size:14px;line-height:1.6}
 .nodata-panel b{color:var(--ink)}
 
-.actions{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap}
+.actions{display:flex;gap:8px;margin:14px 0 14px;flex-wrap:wrap}
 .btn{font:inherit;font-size:12.5px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 .btn:hover{background:#e6e9db}
 .btn.primary{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
@@ -244,7 +271,7 @@ footer p{margin:4px 0;max-width:90ch}
   <header class="mast">
     <div class="eyebrow">Bird Conservation Data · Multiple Geographies</div>
     <h1>The Bird Conservation <span class="em">Atlas</span></h1>
-    <p class="sub">Conservation priority isn't set at just one scale. This atlas maps where birds are formally recognized as conservation priorities, and where they actually spend their time — starting with <span class="em">U.S. State Wildlife Action Plans</span>, <span class="em">State Endangered Species Act listings</span>, and <span class="em">eBird abundance by state</span>, all in one view, with flyways, regions, and other levels to follow.</p>
+    <p class="sub">This atlas maps where birds are recognized as conservation priorities — starting with <span class="em">State Wildlife Action Plans</span>, <span class="em">State and Federal Endangered Species Act listings</span>, and <span class="em">eBird abundance by state</span>, with flyways, regions, and other levels to follow.</p>
     <div class="statline">
       <div class="stat"><b id="s-taxa">—</b><span id="s-taxa-lbl">bird taxa</span></div>
       <div class="stat"><b id="s-juris">—</b><span id="s-juris-lbl">units mapped</span></div>
@@ -317,8 +344,8 @@ const TERR_NAMES = ['Puerto Rico','U.S. Virgin Islands','Guam','Northern Mariana
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 // ---------- top-level app state ----------
-const S = { levelId:LEVEL_ORDER[0], rank:'all', group:'all', pin:null, focus:null, home:'juris', season:'breeding',
-  tableSort:[{key:'name', dir:1}], tableChips:{sgcn:false, esa:false, abund:false, occ:false}, mapMetric:'sgcn' };
+const S = { levelId:LEVEL_ORDER[0], rank:'all', group:'all', pin:null, focus:null, hoverTi:null, home:'birds', season:'breeding',
+  tableSort:[{key:'name', dir:1}], tableChips:{sgcn:false, esa:false, fedEsa:false, abund:false, occ:false}, mapMetric:'sgcn' };
 
 function curLevel(){ return LEVELS[S.levelId]; }
 function UNITS(){ return curLevel().units; }
@@ -349,6 +376,17 @@ function stateEsaCountsByUnit(){
     Object.keys(se).forEach(uiStr=>c[+uiStr]++); }
   return c;
 }
+function fedEsaCountsByUnit(){
+  const units=UNITS(), taxa=TAXA();
+  const c = new Array(units.length).fill(0);
+  for(let ti=0;ti<taxa.length;ti++){ if(!taxaPass(taxa[ti])) continue;
+    const fed=fedEsaFor(ti); if(!fed) continue;
+    for(let ui=0;ui<units.length;ui++){
+      if(fed.states.indexOf(units[ui].abbr)>=0) c[ui]++;
+    }
+  }
+  return c;
+}
 function abundanceSumByUnit(seasonKey, kind){
   // sum across all taxa (passing current rank/group filters) that have data for this season, per unit.
   // kind: 'pop' sums % of population, 'occ' sums % of state area occupied.
@@ -374,6 +412,7 @@ const MAP_KINDS = [
 function mapMetricDef(){
   if(S.mapMetric==='sgcn') return {key:'sgcn', label:'SGCN totals', shortLabel:'SGCN', unit:'count', noun:'birds listed'};
   if(S.mapMetric==='esa') return {key:'esa', label:'State ESA totals', shortLabel:'State ESA', unit:'count', noun:'State ESA listings'};
+  if(S.mapMetric==='fedEsa') return {key:'fedEsa', label:'Federal ESA totals', shortLabel:'Federal ESA', unit:'count', noun:'Federal ESA listings'};
   const [seasonKey,kind]=S.mapMetric.split(':');
   const seasonLbl=(curLevel().seasons.find(s=>s.key===seasonKey)||{}).label||seasonKey;
   const kindDef=MAP_KINDS.find(k=>k.key===kind)||MAP_KINDS[0];
@@ -389,11 +428,12 @@ function availableMapMetrics(){
 function currentMapValues(){
   if(S.mapMetric==='sgcn') return countsByUnit();
   if(S.mapMetric==='esa') return stateEsaCountsByUnit();
+  if(S.mapMetric==='fedEsa') return fedEsaCountsByUnit();
   const [seasonKey,kind]=S.mapMetric.split(':');
   return abundanceSumByUnit(seasonKey,kind);
 }
 function ensureValidMapMetric(){
-  if(S.mapMetric==='sgcn'||S.mapMetric==='esa') return;
+  if(S.mapMetric==='sgcn'||S.mapMetric==='esa'||S.mapMetric==='fedEsa') return;
   const avail=availableMapMetrics();
   if(!avail.length){ S.mapMetric='sgcn'; return; }
   const [seasonKey]=S.mapMetric.split(':');
@@ -413,6 +453,28 @@ function ensureValidSeason(){
   if(!avail.length) return;
   if(!avail.find(s=>s.key===S.season)) S.season=avail[0].key;
 }
+const FED_ESA_BY_SCI = {"Colinus virginianus":["Endangered",["AZ"]],"Lagopus leucura":["Threatened",["WA"]],"Centrocercus minimus":["Threatened",["CO","UT"]],"Tympanuchus cupido":["Endangered",["TX"]],"Coccyzus americanus":["Threatened",["AZ","CA","CO","ID","MT","NM","NV","OR","TX","UT","WA","WY"]],"Gallinula galeata":["Endangered",["HI"]],"Laterallus jamaicensis":["Threatened",["AL","AR","CO","FL","GA","IN","LA","MS","NC","NM","OK","SC","TN","TX","VA"]],"Antigone canadensis":["Endangered",["MS"]],"Grus americana":["Endangered",["AL","AR","CO","FL","GA","IA","ID","IL","IN","KS","KY","LA","MI","MN","MO","MS","MT","NC","ND","NE","NM","OH","OK","SC","SD","TN","TX","UT","VA","WI","WV"]],"Himantopus mexicanus":["Endangered",["HI"]],"Calidris canutus":["Threatened",["AL","AR","CO","CT","DE","FL","GA","IA","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NY","OH","OK","PA","RI","SC","SD","TN","TX","VA","WI","WV","WY"]],"Brachyramphus marmoratus":["Threatened",["CA","OR","WA"]],"Sternula antillarum":["Endangered",["AZ","CA","NV"]],"Sterna dougallii":["Endangered",["CT","DE","FL","MA","MD","ME","NC","NH","NJ","NY","PR","RI","SC","VA","VI"]],"Phoebastria albatrus":["Endangered",["AK","CA","GU","HI","MP","OR","UM","WA"]],"Hydrobates castro":["Endangered",["HI","UM"]],"Pterodroma cahow":["Endangered",["FL","MA","NC","SC","VA"]],"Pterodroma hasitata":["Endangered",["FL","LA","PR","VI"]],"Pterodroma sandwichensis":["Endangered",["CA","HI","OR","UM","WA"]],"Rostrhamus sociabilis":["Endangered",["FL"]],"Buteo platypterus":["Endangered",["PR"]],"Glaucidium brasilianum":["Threatened",["AZ","TX"]],"Strix occidentalis":["Threatened",["AZ","CA","CO","NM","OR","TX","UT","WA"]],"Dryobates borealis":["Threatened",["AL","AR","FL","GA","LA","MS","NC","OK","SC","TX","VA"]],"Rhynchopsitta pachyrhyncha":["Endangered",["AZ","NM"]],"Polysticta stelleri":["Threatened",["AK"]],"Somateria fischeri":["Threatened",["AK"]],"Empidonax traillii":["Endangered",["AZ","CA","CO","NM","NV","TX","UT"]],"Vireo bellii":["Endangered",["CA"]],"Lanius ludovicianus":["Endangered",["CA"]],"Aphelocoma coerulescens":["Threatened",["FL"]],"Rallus obsoletus":["Endangered",["AZ","CA","NV"]],"Charadrius melodus":["Endangered",["AL","AR","CO","CT","DE","FL","GA","IA","IL","IN","KS","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NY","OH","OK","PA","PR","RI","SC","SD","TN","TX","VA","VI","WI","WY"]],"Charadrius nivosus":["Threatened",["CA","OR","WA"]],"Numenius borealis":["Endangered",["AK","NE","TX"]],"Ammodramus savannarum":["Endangered",["FL"]],"Ammospiza maritima":["Endangered",["FL"]],"Setophaga chrysoparia":["Endangered",["TX"]],"Gymnogyps californianus":["Endangered",["AZ","CA","NV","OR","UT","WA"]],"Accipiter striatus":["Endangered",["PR"]],"Campephilus principalis":["Endangered",["AR"]],"Caracara plancus":["Threatened",["FL"]],"Falco femoralis":["Endangered",["AZ","NM","TX"]],"Eremophila alpestris":["Threatened",["OR","WA"]],"Polioptila californica":["Threatened",["CA"]],"Melozone crissalis":["Threatened",["CA"]],"Acrocephalus familiaris":["Endangered",["HI"]],"Acrocephalus luscinius":["Endangered",["MP"]],"Aerodramus bartschi":["Endangered",["GU","MP"]],"Agelaius xanthomus":["Endangered",["PR"]],"Amazona vittata":["Endangered",["PR"]],"Anas laysanensis":["Endangered",["HI"]],"Anas wyvilliana":["Endangered",["HI"]],"Antrostomus noctitherus":["Endangered",["PR"]],"Branta sandvicensis":["Threatened",["HI"]],"Chasiempis ibidis":["Endangered",["HI"]],"Corvus hawaiiensis":["Endangered",["HI"]],"Corvus kubaryi":["Endangered",["MP"]],"Drepanis coccinea":["Threatened",["HI"]],"Fulica alai":["Endangered",["HI"]],"Gymnomyza samoensis":["Endangered",["AS"]],"Hemignathus wilsoni":["Endangered",["HI"]],"Hypotaenidia owstoni":["Endangered",["GU","MP"]],"Loxioides bailleui":["Endangered",["HI"]],"Loxops caeruleirostris":["Endangered",["HI"]],"Loxops coccineus":["Endangered",["HI"]],"Loxops mana":["Endangered",["HI"]],"Megapodius laperouse":["Endangered",["MP"]],"Myadestes lanaiensis":["Endangered",["HI"]],"Myadestes palmeri":["Endangered",["HI"]],"Oreomystis bairdi":["Endangered",["HI"]],"Palmeria dolei":["Endangered",["HI"]],"Pampusana stairi":["Endangered",["AS"]],"Paroreomyza maculata":["Endangered",["HI"]],"Patagioenas inornata":["Endangered",["PR"]],"Pseudonestor xanthophrys":["Endangered",["HI"]],"Psittirostra psittacea":["Endangered",["HI"]],"Puffinus newelli":["Threatened",["HI","UM"]],"Setophaga angelae":["Threatened",["PR"]],"Telespiza cantans":["Endangered",["HI"]],"Telespiza ultima":["Endangered",["HI"]],"Todiramphus cinnamominus":["Endangered",["GU"]],"Zosterops rotensis":["Endangered",["MP"]],"Corvus leucognaphalus":["Endangered",["PR"]],"Gallinula chloropus":["Endangered",["GU","MP"]],"Grus canadensis":["Endangered",["MS"]],"Oceanodroma castro":["Endangered",["HI","UM"]],"Leuconotopicus borealis":["Threatened",["AL","AR","FL","GA","LA","MS","NC","OK","SC","TX","VA"]],"Vestiaria coccinea":["Threatened",["HI"]],"Gallirallus owstoni":["Endangered",["GU","MP"]]};
+function binomial(s){ const p=s.split(' '); return p.length>=2 ? p[0]+' '+p[1] : s; }
+function fedEsaFor(ti){
+  // returns {status, states:Set} or null. Federal ESA listing is species-wide (not state-specific),
+  // sourced from USFWS ECOS occurrence data, independent of this atlas's SGCN/State ESA/eBird fields.
+  const taxa=TAXA(); const sci=taxa[ti].s;
+  const hit = FED_ESA_BY_SCI[sci] || FED_ESA_BY_SCI[binomial(sci)];
+  if(!hit) return null;
+  return {status:hit[0], states:hit[1]};
+}
+function fedEsaInUnit(ti,ui){
+  // does this taxon's federal ESA range include this unit (state/territory)?
+  const fed=fedEsaFor(ti); if(!fed) return null;
+  const abbr=UNITS()[ui].abbr;
+  return fed.states.indexOf(abbr)>=0 ? fed : null;
+}
+function esaCode(label){
+  const normalized=String(label||'');
+  if(normalized.indexOf('Endangered')>=0) return 'E';
+  if(normalized.indexOf('Threatened')>=0) return 'T';
+  return normalized.slice(0,2);
+}
 function abundancePairFor(ti,ui){
   // returns {pop, occ} (either may be null) for the current season, or null if no data at all
   const ab=curLevel().abundance[ti]; if(!ab) return null;
@@ -425,11 +487,53 @@ function stateEsaFor(ti,ui){
   const se=curLevel().stateEsa && curLevel().stateEsa[ti]; if(!se) return null;
   return se[String(ui)] || null;
 }
+function unitIdsForTaxonMetric(ti, metric){
+  if(metric==='sgcn') return (PRESENCE()[ti]||[]).slice();
+  if(metric==='esa'){
+    const se=curLevel().stateEsa && curLevel().stateEsa[ti];
+    return se ? Object.keys(se).map(uiStr=>+uiStr) : [];
+  }
+  if(metric==='fedEsa'){
+    const fed=fedEsaFor(ti); if(!fed) return [];
+    const units=UNITS();
+    const out=[];
+    for(let ui=0;ui<units.length;ui++){ if(fed.states.indexOf(units[ui].abbr)>=0) out.push(ui); }
+    return out;
+  }
+  const [seasonKey]=String(metric||'').split(':');
+  const ab=curLevel().abundance[ti];
+  const table=ab && ab[seasonKey];
+  return table ? Object.keys(table).map(uiStr=>+uiStr) : [];
+}
+function mapMetricTaxonVerb(){
+  if(S.mapMetric==='esa') return 'have State ESA listings for each';
+  if(S.mapMetric==='fedEsa') return 'have Federal ESA listings for each';
+  if(S.mapMetric!=='sgcn') return 'have '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for each';
+  return 'designate each';
+}
+function mapMetricUnitPhrase(){
+  if(S.mapMetric==='esa') return 'have State ESA data for this bird';
+  if(S.mapMetric==='fedEsa') return 'have a Federal ESA listing for this bird';
+  if(S.mapMetric==='sgcn') return 'list this bird as SGCN';
+  return 'have '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird';
+}
+function tableChipSummaryText(){
+  const parts=[];
+  if(S.tableChips.sgcn) parts.push('SGCN-listed');
+  if(S.tableChips.esa) parts.push('with State ESA');
+  if(S.tableChips.fedEsa) parts.push('with Federal ESA');
+  if(S.tableChips.abund) parts.push('with abundance');
+  if(S.tableChips.occ) parts.push('with % occupied');
+  return parts.length ? parts.join(' + ')+' species' : null;
+}
+function isFocusedChoropleth(){
+  return S.focus!=null && S.mapMetric!=='sgcn' && S.mapMetric!=='esa' && S.mapMetric!=='fedEsa';
+}
 function isSgcnListed(ti,ui){
   const p=PRESENCE()[ti]; return !!p && p.indexOf(ui)>=0;
 }
 function unionRowsForUnit(ui){
-  // every taxon (passing current rank/group filters) that has SGCN listing, State ESA, OR eBird abundance for this unit
+  // every taxon (passing current rank/group filters) that has SGCN listing, State ESA, eBird abundance, OR federal ESA for this unit
   const taxa=TAXA();
   const out=[];
   for(let ti=0;ti<taxa.length;ti++){
@@ -437,7 +541,8 @@ function unionRowsForUnit(ui){
     const sgcn=isSgcnListed(ti,ui);
     const esa=stateEsaFor(ti,ui);
     const ab=abundancePairFor(ti,ui);
-    if(sgcn || esa || ab) out.push({ti, sgcn, esa, ab});
+    const fedEsa=fedEsaInUnit(ti,ui);
+    if(sgcn || esa || ab || fedEsa) out.push({ti, sgcn, esa, ab, fedEsa});
   }
   return out;
 }
@@ -451,6 +556,8 @@ const UNI_COLUMNS = [
     value:r=>r.sgcn?1:0, chipPass:r=>!!r.sgcn},
   {key:'esa',    label:'State ESA',sortable:true,  chip:true,  defaultDir:1,
     value:r=>r.esa?(r.esa.normalized||r.esa.label):null, chipPass:r=>!!r.esa},
+  {key:'fedEsa', label:'Fed ESA', sortable:true,  chip:true,  defaultDir:1,
+    value:r=>r.fedEsa?r.fedEsa.status:null, chipPass:r=>!!r.fedEsa},
   {key:'abund',  label:'Abund.',   sortable:true,  chip:true,  defaultDir:-1,
     value:r=>(r.ab&&r.ab.pop!=null)?r.ab.pop:null, chipPass:r=>!!(r.ab&&r.ab.pop!=null)},
   {key:'occ',    label:'Occ.',     sortable:true,  chip:true,  defaultDir:-1,
@@ -550,6 +657,10 @@ function wireUniHeadAndChips(panelEl, onChange){
   }));
   panelEl.querySelectorAll('.seasonchip').forEach(b=>b.addEventListener('click',()=>{
     S.season=b.dataset.seasonkey;
+    if(S.mapMetric!=='sgcn' && S.mapMetric!=='esa'){
+      const [,kind='pop']=S.mapMetric.split(':');
+      S.mapMetric=S.season+':'+kind;
+    }
     onChange();
   }));
 }
@@ -620,7 +731,7 @@ const grpSel = document.getElementById('grp');
 // ---------- geometry (currently: US states/territories topojson; future levels register their own) ----------
 const mapSvg = d3.select('#map');
 const W=960,H=588;
-let fc, mainFeatures, stSel, proj, path;
+let fc, mainFeatures, stSel, outlineSel, proj, path;
 
 function rev(geoName){
   for(const u of UNITS()){ if(u.geo===geoName) return u.name; } return geoName;
@@ -648,6 +759,7 @@ function rebuildGeometry(){
     .on('mouseleave',(e)=>{hideTip();raisePin();})
     .on('click',(e,f)=>pinUnit(byGeo.get(f.properties.name)));
   stSel.attr('aria-label',f=>f.properties.name);
+  outlineSel = mapSvg.append('path').attr('class','state-outline').style('display','none');
 
   // territory tiles
   const terrWrap = document.getElementById('terr');
@@ -669,42 +781,102 @@ function rebuildGeometry(){
 function raisePin(){ if(stSel && S.pin!=null) stSel.filter(f=>byGeo.get(f.properties.name)===S.pin).raise(); }
 
 // ---------- color ----------
-let colorScale=null, curCounts=null;
+let colorScale=null, curCounts=null, focusMapValues=null;
 function buildScale(counts){
   const max=d3.max(counts)||1;
   colorScale=d3.scaleQuantize().domain([1,max]).range(RAMP);
   return max;
 }
+function focusedMetricValues(){
+  if(!isFocusedChoropleth()) return null;
+  const values=new Array(UNITS().length).fill(0);
+  const [seasonKey,kind]=S.mapMetric.split(':');
+  const idx = kind==='occ' ? 1 : 0;
+  const ab=curLevel().abundance[S.focus];
+  const table=ab && ab[seasonKey];
+  if(!table) return values;
+  Object.entries(table).forEach(([uiStr,pair])=>{
+    const v=pair[idx];
+    if(v!=null) values[+uiStr]=v;
+  });
+  return values;
+}
+function activeMapValues(){
+  return focusMapValues || curCounts;
+}
 function fillFor(ui){
+  if(isFocusedChoropleth()){
+    const n=activeMapValues()[ui];
+    return n>0 ? colorScale(n) : EMPTY;
+  }
   if(S.focus!=null){
-    return PRESENCE()[S.focus].indexOf(ui)>=0 ? SIGNAL : ABSENT;
+    return unitIdsForTaxonMetric(S.focus,S.mapMetric).indexOf(ui)>=0 ? SIGNAL : ABSENT;
   }
   const n=curCounts[ui];
   return n>0 ? colorScale(n) : EMPTY;
 }
-
-// ---------- render ----------
-function render(){
-  ensureValidMapMetric();
-  curCounts = currentMapValues();
-  const max = buildScale(curCounts.filter(v=>v>0).length?curCounts:[1]);
-  const focusSet = S.focus!=null ? new Set(PRESENCE()[S.focus]) : null;
+function hoverSet(){
+  return S.hoverTi!=null ? new Set(unitIdsForTaxonMetric(S.hoverTi,S.mapMetric)) : null;
+}
+function updateMapPreview(){
+  const focusSet = S.focus!=null ? new Set(unitIdsForTaxonMetric(S.focus,S.mapMetric)) : null;
+  const previewSet = S.focus==null ? hoverSet() : null;
+  const outlinedUnits = previewSet;
 
   if(stSel){
     stSel.attr('fill',f=>fillFor(byGeo.get(f.properties.name)))
          .classed('pinned',f=>byGeo.get(f.properties.name)===S.pin)
          .classed('dim',f=>focusSet? !focusSet.has(byGeo.get(f.properties.name)) : false);
   }
+  if(outlineSel){
+    if(outlinedUnits && outlinedUnits.size){
+      const mesh = topojson.mesh(TOPO, TOPO.objects.states, (a,b)=>{
+        const aUi = byGeo.get(a.properties.name);
+        const bUi = b ? byGeo.get(b.properties.name) : null;
+        return (aUi!=null && outlinedUnits.has(aUi)) || (bUi!=null && outlinedUnits.has(bUi));
+      });
+      outlineSel.attr('d', path(mesh)).style('display', null);
+    } else {
+      outlineSel.attr('d', null).style('display','none');
+    }
+  }
   raisePin();
 
   document.querySelectorAll('.tile').forEach(t=>{
     const ui=+t.dataset.si;
-    t.querySelector('.tst').setAttribute('fill', fillFor(ui));
+    const tst=t.querySelector('.tst');
+    tst.setAttribute('fill', fillFor(ui));
     t.classList.toggle('pinned', ui===S.pin);
+    t.classList.toggle('hovermatch', previewSet? previewSet.has(ui) : false);
     const ct=t.querySelector('[data-ct]');
     const unit=mapMetricDef().unit;
-    ct.textContent = S.focus!=null ? (focusSet.has(ui)?'✓':'·') : (unit==='pct-sum' ? curCounts[ui].toFixed(0)+'%' : curCounts[ui]);
+    if(isFocusedChoropleth()){
+      const val=activeMapValues()[ui];
+      ct.textContent = val>0 ? val.toFixed(1)+'%' : '·';
+    } else {
+      ct.textContent = S.focus!=null ? (focusSet.has(ui)?'✓':'·') : (unit==='pct-sum' ? curCounts[ui].toFixed(0)+'%' : curCounts[ui]);
+    }
   });
+}
+function setHoverTaxon(ti){
+  if(S.hoverTi===ti) return;
+  S.hoverTi=ti;
+  updateMapPreview();
+}
+function clearHoverTaxon(){
+  if(S.hoverTi==null) return;
+  S.hoverTi=null;
+  updateMapPreview();
+}
+
+// ---------- render ----------
+function render(){
+  ensureValidMapMetric();
+  curCounts = currentMapValues();
+  focusMapValues = focusedMetricValues();
+  const scaleValues = activeMapValues();
+  const max = buildScale(scaleValues.filter(v=>v>0).length?scaleValues:[1]);
+  updateMapPreview();
 
   renderMapMetricSeg();
   renderLegend(max);
@@ -717,16 +889,22 @@ function renderLegend(max){
   const lg=document.getElementById('legend');
   const note=document.getElementById('legend-note');
   const m=mapMetricDef();
-  lg.classList.toggle('focus', S.focus!=null);
+  lg.classList.toggle('focus', S.focus!=null && !isFocusedChoropleth());
   document.getElementById('legend-lbl').textContent =
-    S.focus!=null ? 'Range across plans' : (S.group==='all'?m.noun:S.group+' listed · '+m.shortLabel);
-  if(S.focus!=null){ note.textContent=''; return; }
+    isFocusedChoropleth()
+      ? (TAXA()[S.focus].c+' · '+m.shortLabel)
+      : (S.focus!=null ? 'Range across plans' : (S.group==='all'?m.noun:S.group+' listed · '+m.shortLabel));
+  if(S.focus!=null && !isFocusedChoropleth()){ note.textContent=''; return; }
   const ramp=document.getElementById('ramp'); ramp.innerHTML='';
   RAMP.forEach(c=>{const i=document.createElement('i');i.style.background=c;ramp.appendChild(i);});
   const ticks=document.getElementById('ticks'); ticks.innerHTML='';
   const ext=RAMP.map(c=>colorScale.invertExtent(c)[1]);
   ext.forEach((v,k)=>{const s=document.createElement('span');s.textContent=(m.unit==='pct-sum'?v.toFixed(0)+'%':Math.round(v));ticks.appendChild(s);});
-  note.textContent = m.unit==='pct-sum'
+  note.textContent = isFocusedChoropleth()
+    ? (m.kind==='occ'
+        ? 'Values show this bird\'s modeled percent of state area occupied in '+m.shortLabel.toLowerCase()+'.'
+        : 'Values show this bird\'s modeled percent of population in each state during '+m.shortLabel.toLowerCase()+'.')
+    : m.unit==='pct-sum'
     ? (m.kind==='occ'
         ? 'Each species\u2019 modeled range covers some % of a state\u2019s area; this map adds that % across every qualifying species, so totals routinely exceed 100% \u2014 it reflects how much combined state-area coverage those species\u2019 ranges represent, not a literal percentage of the state.'
         : 'Each species\u2019 modeled range sums to 100% of its population across all states; this map adds those shares across every qualifying species, so totals routinely exceed 100% \u2014 it reflects how much of the continental bird population (combined across species) is concentrated in that state, not a literal percentage of one population.')
@@ -739,13 +917,14 @@ function renderMapMetricSeg(){
   if(!seg) return;
   const availSeasonKeys=availableMapMetrics(); // array of season keys with data under current filters
   const availSeasons=(curLevel().seasons||[]).filter(s=>availSeasonKeys.includes(s.key));
-  const isStandalone = S.mapMetric==='sgcn' || S.mapMetric==='esa';
+  const isStandalone = S.mapMetric==='sgcn' || S.mapMetric==='esa' || S.mapMetric==='fedEsa';
   const curSeasonKey = isStandalone ? null : S.mapMetric.split(':')[0];
   const curKind = isStandalone ? null : S.mapMetric.split(':')[1];
 
   let h='<div class="mapmetric-row"><span class="chiplbl">Show</span>';
   h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="sgcn" aria-pressed="'+(S.mapMetric==='sgcn')+'">SGCN</button>';
   h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="esa" aria-pressed="'+(S.mapMetric==='esa')+'">State ESA</button>';
+  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="fedEsa" aria-pressed="'+(S.mapMetric==='fedEsa')+'">Federal ESA</button>';
   h+='</div>';
   h+='<div class="mapmetric-row"><span class="chiplbl">Season</span>';
   availSeasons.forEach(s=>{
@@ -787,9 +966,9 @@ function renderPanel(){
 function panelHome(){
   const lv=curLevel();
   const seg='<div class="seg homeseg" role="group" aria-label="Default view">'+
-    '<button data-home="juris" aria-pressed="'+(S.home==='juris')+'">'+lv.shortLabel+'</button>'+
-    '<button data-home="birds" aria-pressed="'+(S.home==='birds')+'">Birds</button></div>';
-  panel.innerHTML = (S.home==='juris') ? jurisLeaderboardHTML(seg) : taxaListHTML(seg);
+    '<button data-home="birds" aria-pressed="'+(S.home==='birds')+'">Birds</button>'+
+    '<button data-home="juris" aria-pressed="'+(S.home==='juris')+'">'+lv.shortLabel+'</button></div>';
+  panel.innerHTML = (S.home==='birds') ? taxaListHTML(seg) : jurisLeaderboardHTML(seg);
   panel.scrollTop=0;
   panel.querySelectorAll('.homeseg button').forEach(b=>b.addEventListener('click',()=>{S.home=b.dataset.home;renderPanel();}));
   if(S.home==='juris'){
@@ -804,6 +983,10 @@ function panelHome(){
       panel.querySelectorAll('.txrow').forEach(el=>{el.style.display=(!q||el.dataset.s.indexOf(q)>=0)?'':'none';});
     });
     panel.querySelectorAll('.txrow').forEach(r=>{
+      r.addEventListener('mouseenter',()=>setHoverTaxon(+r.dataset.ti));
+      r.addEventListener('mouseleave',clearHoverTaxon);
+      r.addEventListener('focus',()=>setHoverTaxon(+r.dataset.ti));
+      r.addEventListener('blur',clearHoverTaxon);
       r.addEventListener('click',()=>setFocus(+r.dataset.ti));
       r.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setFocus(+r.dataset.ti);}});
     });
@@ -811,18 +994,24 @@ function panelHome(){
 }
 
 function taxaListHTML(seg){
-  const taxa=TAXA(), presence=PRESENCE();
-  const idx = taxa.map((t,i)=>i).filter(i=>taxaPass(taxa[i]));
-  idx.sort((a,b)=> presence[b].length-presence[a].length || taxa[a].c.localeCompare(taxa[b].c));
+  const taxa=TAXA();
+  const reachByTaxon = new Map();
+  const idx = taxa.map((t,i)=>i).filter(i=>{
+    if(!taxaPass(taxa[i])) return false;
+    const reach=unitIdsForTaxonMetric(i,S.mapMetric);
+    reachByTaxon.set(i,reach);
+    return reach.length>0;
+  });
+  idx.sort((a,b)=> reachByTaxon.get(b).length-reachByTaxon.get(a).length || taxa[a].c.localeCompare(taxa[b].c));
   const noun = S.rank==='all'?'taxa':(S.rank==='sp'?'species':'subspecies');
   let h = seg +
     '<h2>Birds by reach</h2>'+
     '<p class="meta">'+idx.length+' '+noun+(S.group==='all'?'':' · '+S.group)+
-    ' — number of '+curLevel().unitNoun+' that designate each. Select a bird to map where it\u2019s listed.</p>'+
+    ' — number of '+curLevel().unitNoun+' that '+mapMetricTaxonVerb()+'. Select a bird to map where it matches the current map metric.</p>'+
     '<input class="listsearch" id="txsearch" placeholder="Filter birds\u2026">'+
     '<div class="lead">';
   idx.forEach((ti,k)=>{
-    const t=taxa[ti], n=presence[ti].length;
+    const t=taxa[ti], n=reachByTaxon.get(ti).length;
     h+='<div class="row txrow" data-ti="'+ti+'" data-s="'+esc((t.c+' '+t.s).toLowerCase())+'" tabindex="0" role="button">'+
        '<span class="rk">'+(k+1)+'</span>'+
        '<span class="nm tx"><span class="cn">'+t.c+'</span>'+(t.r==='sub'?' <span class="pill sub">ssp</span>':'')+' <span class="sn">'+t.s+'</span></span>'+
@@ -865,35 +1054,37 @@ function panelUnit(ui){
     const allRows=unionRowsForUnit(ui).map(r=>Object.assign(r,{nameKey:taxa[r.ti].c.toLowerCase()}));
     const sgcnCount=allRows.filter(r=>r.sgcn).length;
     const rows=applyUniSort(applyUniChips(allRows));
+    const chipSummary=tableChipSummaryText();
     const q=(document.getElementById('lsearch')||{value:''}).value.trim().toLowerCase();
     const scrollTop=panel.scrollTop;
 
     let h='<h2>'+u.name+'</h2>'+
       '<p class="meta">'+u.abbr+(u.year?' · '+(lv.planLabel||'Plan year')+' '+u.year:'')+'</p>'+
-      '<div class="figrow"><span class="bigfig">'+allRows.length+'</span>'+
-      '<span class="u">species with SGCN, State ESA, or eBird abundance data'+
+      '<div class="figrow"><span class="bigfig">'+rows.length+'</span>'+
+      '<span class="u">'+(chipSummary || 'species with SGCN, State ESA, or eBird abundance data')+
       (S.group==='all'?'':' · '+S.group)+(S.rank==='all'?'':' · '+(S.rank==='sp'?'species':'subspecies'))+
-      ' — '+sgcnCount+' SGCN-listed</span></div>'+
+      (chipSummary ? '' : ' — '+sgcnCount+' SGCN-listed')+'</span></div>'+
       '<div class="actions"><button class="btn" id="back">‹ Back</button>'+
       '<button class="btn primary" id="exp">Export CSV</button></div>'+
       '<input class="listsearch" id="lsearch" placeholder="Filter this list…" value="'+esc(q)+'">'+
-      '<p class="hint" style="margin:2px 0 6px">Abundance &amp; % Occupied shown for '+seasonLbl+'. Decline is a placeholder column — not yet populated. Tap a column header to sort; tap a chip to filter to rows that have that data.</p>'+
+      '<p class="hint" style="margin:2px 0 6px">Decline is a placeholder column — not yet populated. Tap a column header to sort; tap a chip to filter to rows that have that data.</p>'+
       uniChipsHTML()+
       uniHeadHTML()+
       '<div id="taxabox">';
     if(!rows.length){
-      h+='<p class="hint">No species match the current filters'+(S.tableChips.sgcn||S.tableChips.esa||S.tableChips.abund||S.tableChips.occ?' and chips':'')+' for '+u.name+'.</p>';
+      h+='<p class="hint">No species match the current filters'+(S.tableChips.sgcn||S.tableChips.esa||S.tableChips.fedEsa||S.tableChips.abund||S.tableChips.occ?' and chips':'')+' for '+u.name+'.</p>';
     }
-    rows.forEach(({ti,sgcn,esa,ab,nameKey})=>{
+    rows.forEach(({ti,sgcn,esa,ab,fedEsa,nameKey})=>{
       const t=taxa[ti];
       const sgcnCell = sgcn ? '<span class="uc yes sgcn-yes" title="SGCN-listed">✓</span>' : '<span class="uc dim">—</span>';
-      const esaCell = esa ? '<span class="uc esa yes" title="'+esc(esa.label)+'">'+esc(esa.normalized||esa.label)+'</span>' : '<span class="uc dim">—</span>';
+      const esaCell = esa ? '<span class="uc esa yes" title="'+esc(esa.label)+'">'+esc(esaCode(esa.normalized||esa.label))+'</span>' : '<span class="uc dim">—</span>';
+      const fedEsaCell = fedEsa ? '<span class="uc esa yes" title="Federal ESA: '+esc(fedEsa.status)+'">'+esc(fedEsa.status==='Endangered'?'E':fedEsa.status==='Threatened'?'T':'XN')+'</span>' : '<span class="uc dim">—</span>';
       const popCell = (ab && ab.pop!=null) ? '<span class="uc">'+ab.pop.toFixed(1)+'%</span>' : '<span class="uc dim">—</span>';
       const occCell = (ab && ab.occ!=null) ? '<span class="uc">'+ab.occ.toFixed(1)+'%</span>' : '<span class="uc dim">—</span>';
       const declineCell = '<span class="uc placeholder">—</span>';
       h+='<div class="unirow" data-ti="'+ti+'" data-s="'+esc((t.c+' '+t.s).toLowerCase())+'">'+
          '<span class="namecell"><span class="cnrow"><span class="cn">'+t.c+'</span>'+(t.r==='sub'?' <span class="pill sub">ssp</span>':'')+'</span><span class="sn">'+t.s+'</span></span>'+
-         sgcnCell+esaCell+popCell+occCell+declineCell+'</div>';
+         sgcnCell+esaCell+fedEsaCell+popCell+occCell+declineCell+'</div>';
     });
     h+='</div>';
     panel.innerHTML=h;
@@ -906,54 +1097,51 @@ function panelUnit(ui){
       panel.querySelectorAll('.unirow').forEach(el=>{el.style.display=(!qq||el.dataset.s.indexOf(qq)>=0)?'':'none';});
     });
     if(q) panel.querySelectorAll('.unirow').forEach(el=>{el.style.display=(el.dataset.s.indexOf(q)>=0)?'':'none';});
-    panel.querySelectorAll('.unirow').forEach(el=>el.addEventListener('click',()=>setFocus(+el.dataset.ti)));
+    panel.querySelectorAll('.unirow').forEach(el=>{
+      el.addEventListener('click',()=>setFocus(+el.dataset.ti));
+    });
     wireUniHeadAndChips(panel, draw);
   }
   draw();
 }
 
 function panelSpecies(ti){
-  const units=UNITS(), taxa=TAXA(), presence=PRESENCE(), lv=curLevel();
+  const units=UNITS(), taxa=TAXA(), lv=curLevel();
   const t=taxa[ti];
 
   function draw(){
     const seasonLbl=(lv.seasons.find(s=>s.key===S.season)||{}).label || S.season;
-    // union of units with SGCN listing, State ESA, or eBird abundance for the current season
-    const uiSet=new Set(presence[ti]||[]);
-    const se=lv.stateEsa && lv.stateEsa[ti];
-    if(se) Object.keys(se).forEach(k=>uiSet.add(+k));
-    const ab=lv.abundance[ti];
-    const abTable = ab && ab[S.season];
-    if(abTable) Object.keys(abTable).forEach(k=>uiSet.add(+k));
-    const allRows=[...uiSet].map(ui=>({
+    const metricUnits=unitIdsForTaxonMetric(ti,S.mapMetric);
+    const allRows=metricUnits.map(ui=>({
       ui, nameKey: units[ui].name.toLowerCase(),
-      sgcn: isSgcnListed(ti,ui), esa: stateEsaFor(ti,ui), ab: abundancePairFor(ti,ui)
+      sgcn: isSgcnListed(ti,ui), esa: stateEsaFor(ti,ui), ab: abundancePairFor(ti,ui), fedEsa: fedEsaInUnit(ti,ui)
     }));
     const rows=applyUniSort(applyUniChips(allRows));
+    const chipSummary=tableChipSummaryText();
     const scrollTop=panel.scrollTop;
 
     let h='<h2 style="font-style:'+(t.r==='sub'?'italic':'normal')+'">'+t.c+'</h2>'+
       '<p class="meta" style="font-family:Fraunces,serif;font-style:italic;font-size:14px">'+t.s+
       ' <span style="font-family:Inter;font-style:normal">· '+(t.r==='sub'?'subspecies':'species')+' · '+t.g+'</span></p>'+
-      '<div class="figrow"><span class="bigfig signal">'+allRows.length+'</span>'+
-      '<span class="u">of '+units.length+' '+lv.unitNoun+' have SGCN, State ESA, or '+seasonLbl.toLowerCase()+' abundance data for this bird</span></div>'+
+      '<div class="figrow"><span class="bigfig signal">'+rows.length+'</span>'+
+      '<span class="u">'+(chipSummary ? chipSummary+' in ' : 'of '+units.length+' '+lv.unitNoun+' ') + mapMetricUnitPhrase()+'</span></div>'+
       '<div class="actions"><button class="btn" id="back">‹ Clear focus</button>'+
       '<button class="btn primary" id="exp">Export CSV</button></div>'+
-      '<p class="hint" style="margin:2px 0 6px">Abundance &amp; % Occupied shown for '+seasonLbl+'.</p>'+
       uniChipsHTML()+
-      uniHeadHTML(lv.unitNounSingular.replace(/^./,c=>c.toUpperCase()))+
+      uniHeadHTML(lv.unitNounSingular.replace(/^./,c=>c.toUpperCase())).replace('class="unihead"','class="unihead speciespanel"')+
       '<div class="statelist">';
     if(!rows.length){
-      h+='<p class="hint">No '+lv.unitNoun+' match the current chips for this bird.</p>';
+      h+='<p class="hint">No '+lv.unitNoun+' match the current map metric'+(chipSummary?' and selected chips':'')+' for this bird.</p>';
     }
-    rows.forEach(({ui,sgcn,esa,ab})=>{
+    rows.forEach(({ui,sgcn,esa,ab,fedEsa})=>{
       const u=units[ui];
       const sgcnCell = sgcn ? '<span class="uc yes sgcn-yes">✓</span>' : '<span class="uc dim">—</span>';
-      const esaCell = esa ? '<span class="uc esa yes" title="'+esc(esa.label)+'">'+esc(esa.normalized||esa.label)+'</span>' : '<span class="uc dim">—</span>';
+      const esaCell = esa ? '<span class="uc esa yes" title="'+esc(esa.label)+'">'+esc(esaCode(esa.normalized||esa.label))+'</span>' : '<span class="uc dim">—</span>';
+      const fedEsaCell = fedEsa ? '<span class="uc esa yes" title="Federal ESA: '+esc(fedEsa.status)+'">'+esc(fedEsa.status==='Endangered'?'E':fedEsa.status==='Threatened'?'T':'XN')+'</span>' : '<span class="uc dim">—</span>';
       const popCell = (ab && ab.pop!=null) ? '<span class="uc">'+ab.pop.toFixed(1)+'%</span>' : '<span class="uc dim">—</span>';
       const occCell = (ab && ab.occ!=null) ? '<span class="uc">'+ab.occ.toFixed(1)+'%</span>' : '<span class="uc dim">—</span>';
-      h+='<div class="unirow" data-si="'+ui+'" style="grid-template-columns:1fr 38px 58px 56px 56px 56px"><span>'+u.name+'</span>'+
-         sgcnCell+esaCell+popCell+occCell+'<span class="uc placeholder">—</span></div>';
+      h+='<div class="unirow speciespanel" data-si="'+ui+'"><span class="namecell"><span class="cnrow"><span class="cn">'+u.name+'</span></span></span>'+
+         sgcnCell+esaCell+fedEsaCell+popCell+occCell+'<span class="uc placeholder">—</span></div>';
     });
     h+='</div>';
     panel.innerHTML=h; panel.scrollTop=scrollTop;
@@ -966,8 +1154,9 @@ function panelSpecies(ti){
 }
 
 // ---------- interactions ----------
-function pinUnit(ui){ S.focus=null; clearSearch(); S.pin=(S.pin===ui?null:ui); render(); }
+function pinUnit(ui){ S.focus=null; S.hoverTi=null; clearSearch(); S.pin=(S.pin===ui?null:ui); render(); }
 function setFocus(ti){
+  S.hoverTi=null;
   S.focus=ti;
   if(ti==null){ document.getElementById('q').value=''; toggleClear(false); }
   else { S.pin=null; document.getElementById('q').value=TAXA()[ti].c; toggleClear(true); closeDD(); }
@@ -1028,8 +1217,20 @@ function showTip(e,ui){
   const u=UNITS()[ui];
   let body;
   if(S.focus!=null){
-    const has=PRESENCE()[S.focus].indexOf(ui)>=0;
-    body='<b>'+u.name+'</b><br><span class="tn">'+(has?'lists '+TAXA()[S.focus].c:'not listed')+'</span>';
+    if(isFocusedChoropleth()){
+      const val=activeMapValues()[ui];
+      const measureLbl = mapMetricDef().kind==='occ' ? '% state occupied' : '% population';
+      body='<b>'+u.name+'</b><br><span class="tn">'+(val>0 ? (val.toFixed(1)+' '+measureLbl) : ('no '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird'))+'</span>';
+    } else {
+      const has=unitIdsForTaxonMetric(S.focus,S.mapMetric).indexOf(ui)>=0;
+      const metricLbl = S.mapMetric==='esa' ? 'has a State ESA listing for ' :
+        (S.mapMetric==='fedEsa' ? 'has a Federal ESA listing for ' :
+        (S.mapMetric==='sgcn' ? 'lists ' : 'has '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for '));
+      const missingLbl = S.mapMetric==='esa' ? 'no State ESA listing for this bird' :
+        (S.mapMetric==='fedEsa' ? 'no Federal ESA listing for this bird' :
+        (S.mapMetric==='sgcn' ? 'not listed' : 'no '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird'));
+      body='<b>'+u.name+'</b><br><span class="tn">'+(has?(metricLbl+TAXA()[S.focus].c):missingLbl)+'</span>';
+    }
   } else {
     const m=mapMetricDef();
     let valTxt;
@@ -1038,6 +1239,8 @@ function showTip(e,ui){
       valTxt = curCounts[ui]+' '+noun;
     } else if(S.mapMetric==='esa'){
       valTxt = curCounts[ui]+' State ESA listing'+(curCounts[ui]===1?'':'s');
+    } else if(S.mapMetric==='fedEsa'){
+      valTxt = curCounts[ui]+' Federal ESA listing'+(curCounts[ui]===1?'':'s');
     } else {
       const measureLbl = m.kind==='occ' ? 'combined state-area share' : 'combined population share';
       valTxt = curCounts[ui].toFixed(1)+'% '+measureLbl+' · '+m.shortLabel.toLowerCase();
@@ -1061,11 +1264,11 @@ function exportUnit(ui,rows){
   const units=UNITS(), taxa=TAXA(), lv=curLevel();
   const u=units[ui];
   const seasonLbl=(lv.seasons.find(s=>s.key===S.season)||{}).label||S.season;
-  const out=[['Common Name','Scientific Name','Rank','Group','SGCN','State ESA','Pct Population ('+seasonLbl+')','Pct State Occupied ('+seasonLbl+')','Decline']];
-  rows.forEach(({ti,sgcn,esa,ab})=>{
+  const out=[['Common Name','Scientific Name','Rank','Group','SGCN','State ESA','Federal ESA','Pct Population ('+seasonLbl+')','Pct State Occupied ('+seasonLbl+')','Decline']];
+  rows.forEach(({ti,sgcn,esa,ab,fedEsa})=>{
     const t=taxa[ti];
     out.push([t.c,t.s,t.r==='sub'?'Subspecies':'Species',t.g,
-      sgcn?'Y':'N', esa?(esa.normalized||esa.label):'',
+      sgcn?'Y':'N', esa?(esa.normalized||esa.label):'', fedEsa?fedEsa.status:'',
       (ab&&ab.pop!=null)?ab.pop.toFixed(2):'', (ab&&ab.occ!=null)?ab.occ.toFixed(2):'', '']);
   });
   dl('ACAD_'+u.abbr+'_birds.csv',out);
@@ -1074,12 +1277,12 @@ function exportSpecies(ti,uis){
   const units=UNITS(), taxa=TAXA(), lv=curLevel();
   const t=taxa[ti];
   const seasonLbl=(lv.seasons.find(s=>s.key===S.season)||{}).label||S.season;
-  const out=[[lv.shortLabel,'Abbr','Plan Year','Common Name','Scientific Name','Rank','SGCN','State ESA','Pct Population ('+seasonLbl+')','Pct State Occupied ('+seasonLbl+')','Decline']];
+  const out=[[lv.shortLabel,'Abbr','Plan Year','Common Name','Scientific Name','Rank','SGCN','State ESA','Federal ESA','Pct Population ('+seasonLbl+')','Pct State Occupied ('+seasonLbl+')','Decline']];
   uis.forEach(ui=>{
     const u=units[ui];
-    const sgcn=isSgcnListed(ti,ui), esa=stateEsaFor(ti,ui), ab=abundancePairFor(ti,ui);
+    const sgcn=isSgcnListed(ti,ui), esa=stateEsaFor(ti,ui), ab=abundancePairFor(ti,ui), fedEsa=fedEsaInUnit(ti,ui);
     out.push([u.name,u.abbr,u.year||'',t.c,t.s,t.r==='sub'?'Subspecies':'Species',
-      sgcn?'Y':'N', esa?(esa.normalized||esa.label):'',
+      sgcn?'Y':'N', esa?(esa.normalized||esa.label):'', fedEsa?fedEsa.status:'',
       (ab&&ab.pop!=null)?ab.pop.toFixed(2):'', (ab&&ab.occ!=null)?ab.occ.toFixed(2):'', '']);
   });
   dl('ACAD_'+t.c.replace(/[^A-Za-z0-9]+/g,'_')+'_byUnit.csv',out);
