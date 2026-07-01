@@ -104,7 +104,7 @@ select.ctl{width:170px;font:inherit;font-size:14px;padding:8px 30px 8px 11px;bor
 .mapmetricchip[aria-pressed=true]{background:var(--metric);border-color:var(--metric);color:#fff}
 .chip.combinechip{margin-left:8px;border-style:dashed;border-color:var(--line);color:var(--sage);background:var(--paper);font-weight:600}
 .chip.combinechip::before{content:"+";display:inline-block;margin-right:5px;font-weight:600}
-.chip.combinechip[aria-pressed=true]{background:var(--metric);border-color:var(--metric);border-style:dashed;color:#fff}
+.chip.combinechip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);border-style:dashed;color:#fff}
 .mapcombo-note .combo-txt{font-size:11.5px;color:var(--sage);font-style:italic}
 svg.usmap{display:block;width:100%;height:auto}
 .st{stroke:var(--paper-2);stroke-width:.6;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;cursor:pointer;pointer-events:all;touch-action:manipulation;transition:fill .35s ease,stroke .15s ease,stroke-width .15s ease}
@@ -160,9 +160,9 @@ svg.usmap{display:block;width:100%;height:auto}
 .lead .row .val{font-family:'Spline Sans Mono',monospace;font-size:12px;font-weight:500;width:34px;text-align:right}
 .homeseg{margin:0 0 14px;width:100%}
 .homeseg button{flex:1}
-.lead .row .nm.tx{display:flex;align-items:flex-start;flex-wrap:wrap;gap:4px 6px;min-width:0;overflow:visible}
+.lead .row .nm.tx{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 6px;min-width:0;overflow:visible;font-size:13px}
 .lead .row .nm.tx .cn{flex:0 1 auto;min-width:0;overflow:visible;white-space:normal;text-overflow:clip;overflow-wrap:normal;word-break:keep-all;hyphens:none}
-.lead .row .nm.tx .sn{flex:0 1 auto;min-width:0;font-family:Fraunces,serif;font-style:italic;font-size:11.5px;color:var(--sage);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:normal;word-break:keep-all;hyphens:none}
+.lead .row .nm.tx .sn{flex:0 1 auto;min-width:0;font-family:Fraunces,serif;font-style:italic;font-size:11px;color:var(--sage);line-height:1;position:relative;top:.5px;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:normal;word-break:keep-all;hyphens:none}
 .txrow{cursor:pointer}
 .barwrap{display:flex;align-items:center;gap:8px}
 .bartrack{width:74px;display:flex}
