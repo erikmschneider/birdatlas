@@ -102,6 +102,7 @@ select.ctl{width:170px;font:inherit;font-size:14px;padding:8px 30px 8px 11px;bor
 .mapmetricchip.kind[disabled]{cursor:default;opacity:.4}
 .mapmetricchip.kind[disabled]:hover{background:var(--paper)}
 .mapmetricchip[aria-pressed=true]{background:var(--metric);border-color:var(--metric);color:#fff}
+.mapcombo-note .combo-txt{font-size:11.5px;color:var(--sage);font-style:italic}
 svg.usmap{display:block;width:100%;height:auto}
 .st{stroke:var(--paper-2);stroke-width:.6;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;cursor:pointer;pointer-events:all;touch-action:manipulation;transition:fill .35s ease,stroke .15s ease,stroke-width .15s ease}
 .st:focus,.st:focus-visible{outline:none}
@@ -445,7 +446,8 @@ const BCC_BY_ABBR = {"AK":51,"AL":63,"AR":31,"AZ":81,"CA":92,"CO":60,"CT":42,"DC
 const BCC_NAMES_BY_ABBR = {"AK":["Aleutian Tern","Allen's Hummingbird","American Golden-Plover","Ancient Murrelet","Bar-tailed Godwit","Black Oystercatcher","Black Swift","Black Turnstone","Brandt's Cormorant","Bristle-thighed Curlew","Buff-breasted Sandpiper","California Gull","Cassin's Auklet","Cassin's Finch","Chestnut-backed Chickadee (Northern)","Clark's Grebe","Dunlin (Northern Alaska)","Evening Grosbeak","Flammulated Owl","Gray-headed Chickadee (Alaska)","Hudsonian Godwit","Kittlitz's Murrelet","Lesser Yellowlegs","Marbled Godwit","Marbled Murrelet (Alaska)","McKay's Bunting","Oak Titmouse","Olive-sided Flycatcher","Pectoral Sandpiper","Red Knot (Pacific)","Red-faced Cormorant","Red-legged Kittiwake","Rock Sandpiper (Pribilof)","Rufous Hummingbird","Short-billed Dowitcher","Short-eared Owl","Snowy Owl","Solitary Sandpiper (Western)","Tufted Puffin","Varied Thrush (Pacific)","Vaux's Swift (Vaux's)","Vesper Sparrow (Oregon)","Wandering Tattler","Western Grebe","Western Gull","Western Screech-Owl (Northern Pacific)","Whiskered Auklet","White-breasted Nuthatch (Slender-billed)","Willet","Wrentit","Yellow-billed Loon"],"AL":["American Golden-Plover","American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Black-throated Green Warbler (Wayne's)","Bobolink","Brown-headed Nuthatch","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dickcissel","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Forster's Tern","Golden-winged Warbler","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Loggerhead Shrike (Eastern)","Long-billed Curlew","Marbled Godwit","Mountain Plover","Northern Saw-whet Owl","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Pyrrhuloxia","Red Knot (Pacific)","Red-headed Woodpecker","Reddish Egret","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Sandwich Tern","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)"],"AR":["American Golden-Plover","American Kestrel (Southeast)","Bachman's Sparrow","Bewick's Wren (Eastern)","Black-billed Cuckoo","Bobolink","Brown-headed Nuthatch","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Eastern Whip-poor-will","Field Sparrow","Grasshopper Sparrow","Henslow's Sparrow","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-eared Owl","Sprague's Pipit","Swallow-tailed Kite","Wood Thrush","Yellow Rail"],"AZ":["American Avocet","American White Pelican","Arizona Woodpecker","Baird's Sparrow","Bendire's Thrasher","Black Rosy-Finch","Black Skimmer","Black Swift","Black Tern","Black-capped Vireo","Black-chinned Sparrow","Black-throated Gray Warbler","Bobolink","Broad-tailed Hummingbird","Brown-capped Rosy-Finch","Burrowing Owl (Western)","Cactus Wren (Speckled)","California Gull","California Thrasher","Calliope Hummingbird","Cassia Crossbill","Cassin's Finch","Cassin's Sparrow","Chestnut-collared Longspur","Clark's Grebe","Clark's Nutcracker","Colima Warbler","Common Nighthawk (Henry's)","Cordilleran Flycatcher","Costa's Hummingbird","Curve-billed Thrasher (Palmer's))","Eastern Meadowlark","Elegant Trogon","Evening Grosbeak","Ferruginous Hawk","Flammulated Owl","Forster's Tern","Franklin's Gull","Gila Woodpecker","Gilded Flicker","Grace's Warbler","Gull-billed Tern","Lawrence's Goldfinch","LeConte's Thrasher","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Lucifer Hummingbird","Marbled Godwit","Mexican Chickadee","Mexican Whip-poor-will","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Phainopepla (Southwest)","Pinyon Jay","Plumbeous Vireo","Pyrrhuloxia","Red Knot (Pacific)","Red-faced Warbler","Rufous Hummingbird","Rufous-winged Sparrow","Sage Thrasher","Scott's Oriole","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Tricolored Blackbird","Varied Bunting","Verdin (Southwest)","Virginia's Warbler","Western Grebe","Whiskered Screech-Owl","Willet","Woodhouse's Scrub-Jay (Woodhouse's)","Yellow Rail","Yellow-footed Gull","Yellow-headed Blackbird"],"CA":["Aleutian Tern","Allen's Hummingbird","American Avocet","American Dipper","American White Pelican","Ancient Murrelet","Ashy Storm-Petrel","Bendire's Thrasher","Black Oystercatcher","Black Rosy-Finch","Black Skimmer","Black Storm-Petrel","Black Swift","Black Tern","Black-chinned Sparrow","Black-throated Gray Warbler","Bobolink","Brandt's Cormorant","Broad-tailed Hummingbird","Bullock's Oriole","Burrowing Owl (Western)","California Gull","California Thrasher","Calliope Hummingbird","Cassia Crossbill","Cassin's Auklet","Cassin's Finch","Chestnut-backed Chickadee (Northern)","Clark's Grebe","Common Yellowthroat (San Francisco)","Costa's Hummingbird","Curve-billed Thrasher (Palmer's))","Elegant Tern","Evening Grosbeak","Flammulated Owl","Forster's Tern","Franklin's Gull","Gila Woodpecker","Gilded Flicker","Grace's Warbler","Gull-billed Tern","Heermann's Gull","Hermit Warbler","Island Scrub-Jay","Kittlitz's Murrelet","Lawrence's Goldfinch","LeConte's Thrasher","LeConte\u2019s Thrasher","Lesser Yellowlegs","Lewis's Woodpecker","Long-eared Owl","Marbled Godwit","Marbled Murrelet (Alaska)","Mountain Plover","Northern Harrier","Nuttall's Woodpecker","Oak Titmouse","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Pyrrhuloxia","Red Knot (Pacific)","Red-faced Cormorant","Rock Sandpiper (Pribilof)","Rufous Hummingbird","Rufous-winged Sparrow","Sage Thrasher","Savannah Sparrow (Belding\u2019s)","Scripps's Murrelet","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Song Sparrow (Alameda/Samuels)","Song Sparrow (Channel Island)","Spotted Owl (California)","Tricolored Blackbird","Tufted Puffin","Varied Thrush (Pacific)","Vaux's Swift (Vaux's)","Verdin (Southwest)","Vesper Sparrow (Oregon)","Virginia's Warbler","Western Grebe","Western Gull","Western Screech-Owl (Northern Pacific)","White-breasted Nuthatch (Slender-billed)","White-headed Woodpecker (California)","Willet","Wrentit","Yellow Rail","Yellow-billed Magpie","Yellow-footed Gull"],"CO":["American Dipper","Baird's Sparrow","Bendire's Thrasher","Black Rosy-Finch","Black Swift","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Black-chinned Sparrow","Bobolink","Broad-tailed Hummingbird","Brown-capped Rosy-Finch","Buff-breasted Sandpiper","Burrowing Owl (Western)","Cactus Wren (Speckled)","California Gull","Cassin's Finch","Cassin's Sparrow","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Clark's Nutcracker","Colima Warbler","Common Nighthawk (Henry's)","Eastern Meadowlark","Evening Grosbeak","Ferruginous Hawk","Flammulated Owl","Franklin's Gull","Grace's Warbler","Grasshopper Sparrow","Hudsonian Godwit","Lark Bunting","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Lucifer Hummingbird","Marbled Godwit","Mexican Whip-poor-will","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Prairie Falcon","Pyrrhuloxia","Red-headed Woodpecker","Scott's Oriole","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Varied Bunting","Virginia's Warbler","Western Grebe","Whimbrel (Atlantic)","Willet","Woodhouse's Scrub-Jay (Woodhouse's)","Yellow-headed Blackbird"],"CT":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"DC":["Black-billed Cuckoo","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Eastern Whip-poor-will","Grasshopper Sparrow","Kentucky Warbler","King Rail","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rusty Blackbird","Short-eared Owl","Wood Thrush"],"DE":["American Oystercatcher","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"FL":["American Golden-Plover","American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Black Skimmer","Black-throated Green Warbler (Wayne's)","Brown-headed Nuthatch","Buff-breasted Sandpiper","Burrowing Owl (Florida)","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Dickcissel","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Forster's Tern","Grasshopper Sparrow (Northern)","Great Blue Heron (Great White)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Loggerhead Shrike (Eastern)","Long-billed Curlew","Magnificent Frigatebird","Mangrove Cuckoo","Marbled Godwit","Marsh Wren (Worthington's)","Mountain Plover","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Pyrrhuloxia","Red Knot (Pacific)","Red-headed Woodpecker","Reddish Egret","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Sandwich Tern","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Swallow-tailed Kite","Whimbrel (Atlantic)","White-crowned Pigeon","Willet","Wilson's Plover","Wood Thrush","Yellow Rail"],"GA":["American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Black-throated Green Warbler (Wayne's)","Bobolink","Brown-headed Nuthatch","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Golden-winged Warbler","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Marbled Godwit","Northern Saw-whet Owl","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)"],"IA":["American Golden-Plover","Baird's Sparrow","Black Tern","Black-billed Cuckoo","Bobolink","Buff-breasted Sandpiper","California Gull","Canada Warbler","Cerulean Warbler","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Franklin's Gull","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Lesser Yellowlegs","Loggerhead Shrike (Eastern)","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Pectoral Sandpiper","Prothonotary Warbler","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Sprague's Pipit","Thick-billed Longspur","Upland Sandpiper","Western Grebe","Willet","Wood Thrush","Yellow Rail"],"ID":["American Avocet","American White Pelican","Bendire's Thrasher","Black Rosy-Finch","Black Swift","Black Tern","Bobolink","Broad-tailed Hummingbird","California Gull","Calliope Hummingbird","Cassia Crossbill","Cassin's Finch","Clark's Grebe","Evening Grosbeak","Flammulated Owl","Forster's Tern","Franklin's Gull","Lesser Yellowlegs","Lewis's Woodpecker","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Red Knot (Pacific)","Rufous Hummingbird","Sage Thrasher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Thick-billed Longspur","Virginia's Warbler","Western Grebe","Willet","Williamson's Sapsucker (Rocky Mountain)","Yellow Rail"],"IL":["American Golden-Plover","Bachman's Sparrow","Bewick's Wren (Eastern)","Black Tern","Black-billed Cuckoo","Bobolink","Brown-headed Nuthatch","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-eared Owl","Marbled Godwit","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Swallow-tailed Kite","Upland Sandpiper","Western Grebe","Wood Thrush","Yellow Rail"],"IN":["American Golden-Plover","Bachman's Sparrow","Belted Kingfisher","Bewick's Wren (Eastern)","Black Tern","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Brown-headed Nuthatch","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Meadowlark","Eastern Whip-poor-will","Evening Grosbeak","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-eared Owl","Marbled Godwit","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Swallow-tailed Kite","Upland Sandpiper","Western Grebe","Wood Thrush","Yellow Rail"],"KS":["American Golden-Plover","Bachman's Sparrow","Bewick's Wren (Eastern)","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Bobolink","Broad-tailed Hummingbird","Brown-headed Nuthatch","Buff-breasted Sandpiper","Burrowing Owl (Western)","Cerulean Warbler","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Ferruginous Hawk","Field Sparrow","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Lewis's Woodpecker","Loggerhead Shrike (Eastern)","Long-billed Curlew","Long-eared Owl","Mountain Plover","Northern Harrier","Pectoral Sandpiper","Pinyon Jay","Prairie Warbler","Prothonotary Warbler","Pyrrhuloxia","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Upland Sandpiper","Western Grebe","Whimbrel (Atlantic)","Willet","Wood Thrush"],"KY":["American Golden-Plover","Bachman's Sparrow","Bewick's Wren (Eastern)","Bicknell's Thrush","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Bobolink","Brown-headed Nuthatch","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Eastern Whip-poor-will","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Northern Saw-whet Owl","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-eared Owl","Swallow-tailed Kite","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)"],"LA":["American Golden-Plover","American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Bewick's Wren (Eastern)","Black Skimmer","Black-throated Green Warbler (Wayne's)","Brown-headed Nuthatch","Buff-breasted Sandpiper","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Dickcissel","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Forster's Tern","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-billed Curlew","Marbled Godwit","Mountain Plover","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Pyrrhuloxia","Red Knot (Pacific)","Red-headed Woodpecker","Reddish Egret","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Sandwich Tern","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail"],"MA":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"MD":["American Oystercatcher","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Blue-winged Warbler","Bobolink","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Golden-winged Warbler","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Northern Saw-whet Owl","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-billed Cuckoo (Eastern)","Yellow-breasted Chat (Eastern)"],"ME":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"MI":["American Golden-Plover","Belted Kingfisher","Black Tern","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Common Tern","Connecticut Warbler","Dunlin (Hudson Bay)","Eastern Meadowlark","Eastern Whip-poor-will","Evening Grosbeak","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Lesser Yellowlegs","Long-eared Owl","Marbled Godwit","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Upland Sandpiper","Veery (Eastern)","Western Grebe","Whimbrel (Atlantic)","Wood Thrush","Yellow Rail"],"MN":["American Golden-Plover","Baird's Sparrow","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Bobolink","Buff-breasted Sandpiper","Burrowing Owl (Western)","California Gull","Canada Warbler","Cerulean Warbler","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Common Tern","Connecticut Warbler","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Franklin's Gull","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Loggerhead Shrike (Eastern)","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Prothonotary Warbler","Pyrrhuloxia","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Upland Sandpiper","Veery (Eastern)","Western Grebe","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow Rail"],"MO":["American Golden-Plover","American Kestrel (Southeast)","Bachman's Sparrow","Bewick's Wren (Eastern)","Black Tern","Black-billed Cuckoo","Bobolink","Brown-headed Nuthatch","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-eared Owl","Marbled Godwit","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Sprague's Pipit","Swallow-tailed Kite","Upland Sandpiper","Western Grebe","Wood Thrush","Yellow Rail"],"MS":["American Golden-Plover","American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Black Skimmer","Black-throated Green Warbler (Wayne's)","Brown-headed Nuthatch","Buff-breasted Sandpiper","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Dickcissel","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Forster's Tern","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-billed Curlew","Marbled Godwit","Mountain Plover","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Pyrrhuloxia","Red Knot (Pacific)","Red-headed Woodpecker","Reddish Egret","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Sandwich Tern","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail"],"MT":["American Dipper","American Golden-Plover","Baird's Sparrow","Black Rosy-Finch","Black Swift","Black Tern","Black-billed Cuckoo","Bobolink","Broad-tailed Hummingbird","Buff-breasted Sandpiper","Burrowing Owl (Western)","California Gull","Calliope Hummingbird","Cassin's Finch","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Ferruginous Hawk","Flammulated Owl","Franklin's Gull","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Lark Bunting","LeConte's Sparrow","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Prairie Falcon","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rufous Hummingbird","Short-billed Dowitcher","Short-eared Owl","Sprague's Pipit","Thick-billed Longspur","Western Grebe","Willet","Williamson's Sapsucker (Rocky Mountain)","Yellow Rail"],"NC":["American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Black-throated Green Warbler (Wayne's)","Blue-winged Warbler","Bobolink","Brown-headed Nuthatch","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Golden-winged Warbler","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Marbled Godwit","Northern Saw-whet Owl","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)","Yellow-breasted Chat (Eastern)"],"ND":["American Dipper","American Golden-Plover","Baird's Sparrow","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Bobolink","Buff-breasted Sandpiper","Burrowing Owl (Western)","California Gull","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Ferruginous Hawk","Franklin's Gull","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","King Rail","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Pectoral Sandpiper","Pinyon Jay","Prairie Falcon","Pyrrhuloxia","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Western Grebe","Whimbrel (Atlantic)","Willet","Yellow Rail"],"NE":["American Dipper","American Golden-Plover","Baird's Sparrow","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Bobolink","Broad-tailed Hummingbird","Buff-breasted Sandpiper","Burrowing Owl (Western)","California Gull","Cerulean Warbler","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Ferruginous Hawk","Franklin's Gull","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Lewis's Woodpecker","Loggerhead Shrike (Eastern)","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Pectoral Sandpiper","Pinyon Jay","Prairie Falcon","Prothonotary Warbler","Pyrrhuloxia","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Upland Sandpiper","Western Grebe","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow Rail"],"NH":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"NJ":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Golden-winged Warbler","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Northern Saw-whet Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-billed Cuckoo (Eastern)","Yellow-breasted Chat (Eastern)"],"NM":["Arizona Woodpecker","Baird's Sparrow","Bendire's Thrasher","Black Rosy-Finch","Black Swift","Black-capped Vireo","Black-chinned Sparrow","Black-throated Gray Warbler","Broad-tailed Hummingbird","Brown-capped Rosy-Finch","Buff-breasted Sandpiper","Burrowing Owl (Western)","Cactus Wren (Speckled)","California Gull","Cassin's Finch","Cassin's Sparrow","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Clark's Nutcracker","Colima Warbler","Common Nighthawk (Henry's)","Cordilleran Flycatcher","Eastern Meadowlark","Elegant Trogon","Evening Grosbeak","Ferruginous Hawk","Flammulated Owl","Gilded Flicker","Grace's Warbler","Grasshopper Sparrow","Hudsonian Godwit","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Lucifer Hummingbird","Mexican Chickadee","Mexican Whip-poor-will","Mountain Plover","Olive-sided Flycatcher","Pectoral Sandpiper","Phainopepla (Southwest)","Pinyon Jay","Plumbeous Vireo","Pyrrhuloxia","Red-faced Warbler","Red-headed Woodpecker","Rufous-winged Sparrow","Scott's Oriole","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Varied Bunting","Virginia's Warbler","Western Grebe","Whimbrel (Atlantic)","Whiskered Screech-Owl","Woodhouse's Scrub-Jay (Woodhouse's)","Yellow-headed Blackbird"],"NV":["American Avocet","American White Pelican","Bendire's Thrasher","Black Rosy-Finch","Black Skimmer","Black Swift","Black Tern","Black-chinned Sparrow","Bobolink","Broad-tailed Hummingbird","Burrowing Owl (Western)","California Gull","California Thrasher","Calliope Hummingbird","Cassia Crossbill","Cassin's Finch","Clark's Grebe","Costa's Hummingbird","Curve-billed Thrasher (Palmer's))","Evening Grosbeak","Flammulated Owl","Forster's Tern","Franklin's Gull","Gila Woodpecker","Gilded Flicker","Grace's Warbler","Gull-billed Tern","Lawrence's Goldfinch","LeConte's Thrasher","Lesser Yellowlegs","Lewis's Woodpecker","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Pyrrhuloxia","Red Knot (Pacific)","Rufous Hummingbird","Rufous-winged Sparrow","Sage Thrasher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Tricolored Blackbird","Verdin (Southwest)","Virginia's Warbler","Western Grebe","Willet","Yellow Rail","Yellow-footed Gull"],"NY":["American Golden-Plover","American Oystercatcher","Bay-breasted Warbler","Belted Kingfisher","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Blue-winged Warbler","Bobolink","Buff-breasted Sandpiper","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Meadowlark","Eastern Whip-poor-will","Evening Grosbeak","Golden-winged Warbler","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Northern Saw-whet Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Upland Sandpiper","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-billed Cuckoo (Eastern)","Yellow-breasted Chat (Eastern)"],"OH":["American Golden-Plover","Bachman's Sparrow","Belted Kingfisher","Bewick's Wren (Eastern)","Bicknell's Thrush","Black Tern","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Blue-winged Warbler","Bobolink","Brown-headed Nuthatch","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Meadowlark","Eastern Whip-poor-will","Evening Grosbeak","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Marbled Godwit","Northern Saw-whet Owl","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Upland Sandpiper","Western Grebe","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)"],"OK":["American Golden-Plover","American Kestrel (Southeast)","Bachman's Sparrow","Bewick's Wren (Eastern)","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Bobolink","Broad-tailed Hummingbird","Brown-headed Nuthatch","Buff-breasted Sandpiper","Burrowing Owl (Western)","Cerulean Warbler","Chestnut-collared Longspur","Chimney Swift","Chuck-will's Widow","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Ferruginous Hawk","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Lewis's Woodpecker","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-billed Curlew","Long-eared Owl","Mountain Plover","Northern Harrier","Pectoral Sandpiper","Pinyon Jay","Prairie Warbler","Prothonotary Warbler","Pyrrhuloxia","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Swallow-tailed Kite","Thick-billed Longspur","Upland Sandpiper","Western Grebe","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow Rail"],"OR":["Aleutian Tern","Allen's Hummingbird","American Avocet","American White Pelican","Ancient Murrelet","Bendire's Thrasher","Black Oystercatcher","Black Rosy-Finch","Black Swift","Black Tern","Bobolink","Brandt's Cormorant","Broad-tailed Hummingbird","California Gull","Calliope Hummingbird","Cassia Crossbill","Cassin's Auklet","Cassin's Finch","Chestnut-backed Chickadee (Northern)","Clark's Grebe","Evening Grosbeak","Flammulated Owl","Forster's Tern","Franklin's Gull","Kittlitz's Murrelet","Lesser Yellowlegs","Lewis's Woodpecker","Long-eared Owl","Marbled Godwit","Marbled Murrelet (Alaska)","Mountain Plover","Northern Harrier","Oak Titmouse","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Red Knot (Pacific)","Red-faced Cormorant","Rock Sandpiper (Pribilof)","Rufous Hummingbird","Sage Thrasher","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Thick-billed Longspur","Tufted Puffin","Varied Thrush (Pacific)","Vaux's Swift (Vaux's)","Vesper Sparrow (Oregon)","Virginia's Warbler","Western Grebe","Western Gull","Western Screech-Owl (Northern Pacific)","White-breasted Nuthatch (Slender-billed)","Willet","Williamson's Sapsucker (Rocky Mountain)","Wrentit","Yellow Rail"],"PA":["American Golden-Plover","American Oystercatcher","Bay-breasted Warbler","Belted Kingfisher","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Blue-winged Warbler","Bobolink","Buff-breasted Sandpiper","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Meadowlark","Eastern Whip-poor-will","Evening Grosbeak","Golden-winged Warbler","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Northern Saw-whet Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Upland Sandpiper","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-billed Cuckoo (Eastern)","Yellow-breasted Chat (Eastern)"],"RI":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"SC":["American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Black Skimmer","Black-billed Cuckoo","Black-throated Green Warbler (Wayne's)","Brown-headed Nuthatch","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Marbled Godwit","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail"],"SD":["American Dipper","American Golden-Plover","Baird's Sparrow","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Bobolink","Buff-breasted Sandpiper","Burrowing Owl (Western)","California Gull","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Ferruginous Hawk","Franklin's Gull","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","King Rail","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Pectoral Sandpiper","Pinyon Jay","Prairie Falcon","Pyrrhuloxia","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Western Grebe","Whimbrel (Atlantic)","Willet","Yellow Rail"],"TN":["American Golden-Plover","Bachman's Sparrow","Bewick's Wren (Eastern)","Bicknell's Thrush","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Bobolink","Brown-headed Nuthatch","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Eastern Whip-poor-will","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Little Blue Heron","Northern Saw-whet Owl","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-eared Owl","Swallow-tailed Kite","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)"],"TX":["American Golden-Plover","American Kestrel (Southeast)","American Oystercatcher","Arizona Woodpecker","Bachman's Sparrow","Baird's Sparrow","Bendire's Thrasher","Bewick's Wren (Eastern)","Black Skimmer","Black Tern","Black-billed Cuckoo","Black-capped Vireo","Black-chinned Sparrow","Black-throated Gray Warbler","Black-throated Green Warbler (Wayne's)","Bobolink","Broad-tailed Hummingbird","Brown-headed Nuthatch","Buff-breasted Sandpiper","Burrowing Owl (Western)","Cactus Wren (Speckled)","Cassin's Sparrow","Cerulean Warbler","Chestnut-collared Longspur","Chihuahuan Raven","Chimney Swift","Chuck-will's Widow","Clark's Grebe","Colima Warbler","Common Nighthawk (Henry's)","Cordilleran Flycatcher","Curve-billed Thrasher (Brownsville)","Dickcissel","Dunlin (Hudson Bay)","Eastern Meadowlark","Eastern Whip-poor-will","Elegant Trogon","Evening Grosbeak","Ferruginous Hawk","Field Sparrow","Flammulated Owl","Forster's Tern","Gilded Flicker","Grace's Warbler","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Harris's Hawk","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Lark Bunting","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Lewis's Woodpecker","Little Blue Heron","Loggerhead Shrike (Eastern)","Long-billed Curlew","Long-eared Owl","Lucifer Hummingbird","Marbled Godwit","Mexican Chickadee","Mexican Whip-poor-will","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Orchard Oriole","Painted Bunting","Pectoral Sandpiper","Phainopepla (Southwest)","Pinyon Jay","Plumbeous Vireo","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Pyrrhuloxia","Red Knot (Pacific)","Red-faced Warbler","Red-headed Woodpecker","Reddish Egret","Ruddy Turnstone (Atlantic)","Rufous-crowned Sparrow (Rock)","Rufous-winged Sparrow","Rusty Blackbird","Saltmarsh Sparrow","Sandwich Tern","Scott's Oriole","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Swallow-tailed Kite","Thick-billed Longspur","Varied Bunting","Virginia's Warbler","Western Grebe","Whimbrel (Atlantic)","Whiskered Screech-Owl","Willet","Wilson's Plover","Wood Thrush","Woodhouse's Scrub-Jay (Woodhouse's)","Yellow Rail"],"UT":["American Avocet","American White Pelican","Bendire's Thrasher","Black Rosy-Finch","Black Swift","Black Tern","Black-chinned Sparrow","Bobolink","Broad-tailed Hummingbird","Brown-capped Rosy-Finch","California Gull","Calliope Hummingbird","Cassia Crossbill","Cassin's Finch","Clark's Grebe","Clark's Nutcracker","Evening Grosbeak","Flammulated Owl","Forster's Tern","Franklin's Gull","Grace's Warbler","Lesser Yellowlegs","Lewis's Woodpecker","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Red Knot (Pacific)","Rufous Hummingbird","Sage Thrasher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Virginia's Warbler","Western Grebe","Willet","Yellow Rail","Yellow-headed Blackbird"],"VA":["American Kestrel (Southeast)","American Oystercatcher","Bachman's Sparrow","Bewick's Wren (Eastern)","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Black-throated Green Warbler (Wayne's)","Blue-winged Warbler","Bobolink","Brown-headed Nuthatch","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Grasshopper Sparrow (Northern)","Gull-billed Tern","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Marbled Godwit","Northern Saw-whet Owl","Painted Bunting","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Swallow-tailed Kite","Whimbrel (Atlantic)","Willet","Wilson's Plover","Wood Thrush","Yellow Rail","Yellow-billed Cuckoo (Eastern)","Yellow-breasted Chat (Eastern)"],"VT":["American Oystercatcher","Bay-breasted Warbler","Bicknell's Thrush","Black Skimmer","Black-billed Cuckoo","Blue-winged Warbler","Bobolink","Canada Warbler","Cape May Warbler","Cerulean Warbler","Chimney Swift","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Grasshopper Sparrow (Northern)","Gull-billed Tern","Hudsonian Godwit","Kentucky Warbler","King Rail","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Long-eared Owl","Olive-sided Flycatcher","Pectoral Sandpiper","Prairie Warbler","Prothonotary Warbler","Purple Sandpiper","Red-headed Woodpecker","Rose-breasted Grosbeak","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Saltmarsh Sparrow","Scarlet Tanager","Seaside Sparrow (Atlantic/Gulf)","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Veery (Eastern)","Whimbrel (Atlantic)","Willet","Wood Thrush","Yellow-breasted Chat (Eastern)"],"WA":["Aleutian Tern","Allen's Hummingbird","Ancient Murrelet","Black Oystercatcher","Black Rosy-Finch","Black Swift","Black Tern","Bobolink","Brandt's Cormorant","Broad-tailed Hummingbird","California Gull","Calliope Hummingbird","Cassin's Auklet","Cassin's Finch","Chestnut-backed Chickadee (Northern)","Clark's Grebe","Evening Grosbeak","Flammulated Owl","Franklin's Gull","Kittlitz's Murrelet","Lesser Yellowlegs","Lewis's Woodpecker","Long-eared Owl","Marbled Godwit","Marbled Murrelet (Alaska)","Mountain Plover","Oak Titmouse","Olive-sided Flycatcher","Pinyon Jay","Red Knot (Pacific)","Red-faced Cormorant","Rock Sandpiper (Pribilof)","Rufous Hummingbird","Short-billed Dowitcher","Thick-billed Longspur","Tufted Puffin","Varied Thrush (Pacific)","Vaux's Swift (Vaux's)","Vesper Sparrow (Oregon)","Western Grebe","Western Gull","Western Screech-Owl (Northern Pacific)","White-breasted Nuthatch (Slender-billed)","Willet","Williamson's Sapsucker (Rocky Mountain)","Wrentit","Yellow Rail"],"WI":["American Golden-Plover","Black Tern","Black-billed Cuckoo","Bobolink","Buff-breasted Sandpiper","Canada Warbler","Cerulean Warbler","Chimney Swift","Common Tern","Connecticut Warbler","Dunlin (Hudson Bay)","Eastern Whip-poor-will","Evening Grosbeak","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Hudsonian Godwit","Kentucky Warbler","King Rail","Kirtland\u2019s Warbler","LeConte's Sparrow","Lesser Yellowlegs","Loggerhead Shrike (Eastern)","Long-eared Owl","Marbled Godwit","Olive-sided Flycatcher","Pectoral Sandpiper","Prothonotary Warbler","Red-headed Woodpecker","Ruddy Turnstone (Atlantic)","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-billed Dowitcher","Short-eared Owl","Upland Sandpiper","Veery (Eastern)","Western Grebe","Whimbrel (Atlantic)","Wood Thrush","Yellow Rail"],"WV":["Bachman's Sparrow","Bewick's Wren (Eastern)","Bicknell's Thrush","Black-billed Cuckoo","Black-capped Chickadee (Appalachian)","Bobolink","Brown-headed Nuthatch","Canada Warbler","Cerulean Warbler","Chimney Swift","Chuck-will's Widow","Common Nighthawk (Lesser)","Eastern Whip-poor-will","Field Sparrow","Golden-winged Warbler","Grasshopper Sparrow","Henslow's Sparrow","Kentucky Warbler","King Rail","LeConte's Sparrow","Least Tern (Atlantic/Interior)","Lesser Yellowlegs","Northern Saw-whet Owl","Prairie Warbler","Prothonotary Warbler","Red-headed Woodpecker","Rusty Blackbird","Semipalmated Sandpiper (Eastern/Central)","Short-eared Owl","Wood Thrush","Yellow-billed Cuckoo (Eastern)"],"WY":["American Avocet","American Dipper","American White Pelican","Baird's Sparrow","Bendire's Thrasher","Black Rosy-Finch","Black Swift","Black Tern","Black-billed Cuckoo","Black-chinned Sparrow","Bobolink","Broad-tailed Hummingbird","Brown-capped Rosy-Finch","Buff-breasted Sandpiper","Burrowing Owl (Western)","California Gull","Calliope Hummingbird","Cassia Crossbill","Cassin's Finch","Chestnut-collared Longspur","Chimney Swift","Clark's Grebe","Clark's Nutcracker","Evening Grosbeak","Ferruginous Hawk","Flammulated Owl","Forster's Tern","Franklin's Gull","Grace's Warbler","Grasshopper Sparrow","Hudsonian Godwit","Lark Bunting","Lesser Yellowlegs","Lewis's Woodpecker","Long-billed Curlew","Long-eared Owl","Marbled Godwit","Mountain Plover","Northern Harrier","Olive-sided Flycatcher","Pectoral Sandpiper","Pinyon Jay","Prairie Falcon","Pyrrhuloxia","Red Knot (Pacific)","Red-headed Woodpecker","Rufous Hummingbird","Sage Thrasher","Short-eared Owl","Snowy Plover (Interior/Gulf Coast)","Sprague's Pipit","Thick-billed Longspur","Virginia's Warbler","Western Grebe","Whimbrel (Atlantic)","Willet","Williamson's Sapsucker (Rocky Mountain)","Yellow Rail","Yellow-headed Blackbird"]};
 // ---------- top-level app state ----------
 const S = { levelId:LEVEL_ORDER[0], rank:'all', group:'all', pin:null, focus:null, hoverTi:null, home:'birds', season:'breeding',
-  tableSort:[{key:'name', dir:1}], tableChips:{sgcn:false, esa:false, fedEsa:false, bcc:false, iucn:false, r2r:false, blm:false, usfs:false, abund:false, occ:false}, mapMetric:'sgcn' };
+  tableSort:[{key:'name', dir:1}], tableChips:{sgcn:false, esa:false, fedEsa:false, bcc:false, iucn:false, r2r:false, blm:false, usfs:false, abund:false, occ:false}, mapCombo:['sgcn'], mapKind:'pop' };
+const STANDALONE_MAP_KEYS=['sgcn','esa','fedEsa','bcc','ccs','ccsArea','iucn','r2r','blm','usfs'];
 
 function curLevel(){ return LEVELS[S.levelId]; }
 function UNITS(){ return curLevel().units; }
@@ -629,22 +631,35 @@ const MAP_KINDS = [
   {key:'pop', label:'% of population', shortLabel:'% Population'},
   {key:'occ', label:'% of state occupied', shortLabel:'% Occupied'},
 ];
-function mapMetricDef(){
-  if(S.mapMetric==='sgcn') return {key:'sgcn', label:'SGCN totals', shortLabel:'SGCN', unit:'count', noun:'birds listed'};
-  if(S.mapMetric==='esa') return {key:'esa', label:'State ESA totals', shortLabel:'State ESA', unit:'count', noun:'State ESA listings'};
-  if(S.mapMetric==='fedEsa') return {key:'fedEsa', label:'Federal ESA totals', shortLabel:'Fed ESA', unit:'count', noun:'Federal ESA listings'};
-  if(S.mapMetric==='bcc') return {key:'bcc', label:'BCC totals', shortLabel:'BCC', unit:'count', noun:'BCC species'};
-  if(S.mapMetric==='ccs') return {key:'ccs', label:'Combined CCS totals', shortLabel:'CCS', unit:'ccs-sum', noun:'combined CCS points'};
-  if(S.mapMetric==='ccsArea') return {key:'ccsArea', label:'Area-adjusted CCS totals', shortLabel:'CCS / area', unit:'ccs-density', noun:'combined CCS points per 100k sq km'};
-  if(S.mapMetric==='iucn') return {key:'iucn', label:'IUCN concern totals', shortLabel:'IUCN', unit:'count', noun:'IUCN concern species'};
-  if(S.mapMetric==='r2r') return {key:'r2r', label:'R2R concern totals', shortLabel:'R2R', unit:'count', noun:'R2R concern taxa'};
-  if(S.mapMetric==='blm') return {key:'blm', label:'BLM list totals', shortLabel:'BLM', unit:'count', noun:'BLM-listed taxa'};
-  if(S.mapMetric==='usfs') return {key:'usfs', label:'USFS list totals', shortLabel:'USFS', unit:'count', noun:'USFS-listed taxa'};
-  const [seasonKey,kind]=S.mapMetric.split(':');
+const STANDALONE_MAP_DEFS = {
+  sgcn:  {label:'SGCN totals',              shortLabel:'SGCN',       unit:'count', noun:'birds listed'},
+  esa:   {label:'State ESA totals',         shortLabel:'State ESA',  unit:'count', noun:'State ESA listings'},
+  fedEsa:{label:'Federal ESA totals',       shortLabel:'Fed ESA',    unit:'count', noun:'Federal ESA listings'},
+  bcc:   {label:'BCC totals',               shortLabel:'BCC',        unit:'count', noun:'BCC species'},
+  ccs:   {label:'Combined CCS totals',      shortLabel:'CCS',        unit:'ccs-sum', noun:'combined CCS points'},
+  ccsArea:{label:'Area-adjusted CCS totals',shortLabel:'CCS / area', unit:'ccs-density', noun:'combined CCS points per 100k sq km'},
+  iucn:  {label:'IUCN concern totals',      shortLabel:'IUCN',       unit:'count', noun:'IUCN concern species'},
+  r2r:   {label:'R2R concern totals',       shortLabel:'R2R',        unit:'count', noun:'R2R concern taxa'},
+  blm:   {label:'BLM list totals',          shortLabel:'BLM',        unit:'count', noun:'BLM-listed taxa'},
+  usfs:  {label:'USFS list totals',         shortLabel:'USFS',       unit:'count', noun:'USFS-listed taxa'}
+};
+function defForMapKey(key){
+  if(STANDALONE_MAP_DEFS[key]) return Object.assign({key}, STANDALONE_MAP_DEFS[key]);
+  const [seasonKey,kind]=key.split(':');
   const seasonLbl=(curLevel().seasons.find(s=>s.key===seasonKey)||{}).label||seasonKey;
   const kindDef=MAP_KINDS.find(k=>k.key===kind)||MAP_KINDS[0];
-  return {key:S.mapMetric, seasonKey, kind, label:seasonLbl+' '+kindDef.label, shortLabel:seasonLbl,
+  return {key, seasonKey, kind, label:seasonLbl+' '+kindDef.label, shortLabel:seasonLbl+' '+kindDef.shortLabel,
     unit:'pct-sum', noun:'combined '+(kind==='occ'?'state-area share':'population share')+' ('+seasonLbl+')'};
+}
+function mapMetricDef(){
+  if(S.mapCombo.length===1) return defForMapKey(S.mapCombo[0]);
+  const defs=S.mapCombo.map(defForMapKey);
+  const allSameUnit=defs.every(d=>d.unit===defs[0].unit);
+  const shortLabel = defs.length<=3 ? defs.map(d=>d.shortLabel).join(' + ') : defs.length+' combined';
+  const label = defs.map(d=>d.label).join(' + ');
+  return {key:'combo', combo:true, defs, label, shortLabel,
+    unit: allSameUnit ? defs[0].unit : 'mixed',
+    noun: 'combined total across '+defs.length+' selected frameworks'+(allSameUnit?'':' (mixed units \u2014 see note)')};
 }
 function availableMapMetrics(){
   // SGCN and State ESA are always available as standalone options; season options only show up if that
@@ -652,26 +667,37 @@ function availableMapMetrics(){
   const avail=availableSeasonsForCurrentTaxa();
   return avail.map(s=>s.key);
 }
-function currentMapValues(){
-  if(S.mapMetric==='sgcn') return countsByUnit();
-  if(S.mapMetric==='esa') return stateEsaCountsByUnit();
-  if(S.mapMetric==='fedEsa') return fedEsaCountsByUnit();
-  if(S.mapMetric==='bcc') return bccCountsByUnit();
-  if(S.mapMetric==='ccs') return ccsSumByUnit();
-  if(S.mapMetric==='ccsArea') return ccsAreaSumByUnit();
-  if(S.mapMetric==='iucn') return iucnCountsByUnit();
-  if(S.mapMetric==='r2r') return r2rCountsByUnit();
-  if(S.mapMetric==='blm') return blmCountsByUnit();
-  if(S.mapMetric==='usfs') return usfsCountsByUnit();
-  const [seasonKey,kind]=S.mapMetric.split(':');
+function mapValuesForKey(key){
+  if(key==='sgcn') return countsByUnit();
+  if(key==='esa') return stateEsaCountsByUnit();
+  if(key==='fedEsa') return fedEsaCountsByUnit();
+  if(key==='bcc') return bccCountsByUnit();
+  if(key==='ccs') return ccsSumByUnit();
+  if(key==='ccsArea') return ccsAreaSumByUnit();
+  if(key==='iucn') return iucnCountsByUnit();
+  if(key==='r2r') return r2rCountsByUnit();
+  if(key==='blm') return blmCountsByUnit();
+  if(key==='usfs') return usfsCountsByUnit();
+  const [seasonKey,kind]=key.split(':');
   return abundanceSumByUnit(seasonKey,kind);
 }
+function currentMapValues(){
+  if(S.mapCombo.length===1) return mapValuesForKey(S.mapCombo[0]);
+  const units=UNITS();
+  const totals=new Array(units.length).fill(0);
+  S.mapCombo.forEach(key=>{
+    mapValuesForKey(key).forEach((v,i)=>{ totals[i]+=(v||0); });
+  });
+  return totals;
+}
 function ensureValidMapMetric(){
-  if(['sgcn','esa','fedEsa','bcc','ccs','ccsArea','iucn','r2r','blm','usfs'].includes(S.mapMetric)) return;
-  const avail=availableMapMetrics();
-  if(!avail.length){ S.mapMetric='sgcn'; return; }
-  const [seasonKey]=S.mapMetric.split(':');
-  if(!avail.includes(seasonKey)) S.mapMetric='sgcn';
+  const availSeasons=availableMapMetrics();
+  S.mapCombo=(S.mapCombo||[]).filter(key=>{
+    if(STANDALONE_MAP_KEYS.includes(key)) return true;
+    const [seasonKey,kind]=key.split(':');
+    return availSeasons.includes(seasonKey) && MAP_KINDS.some(k=>k.key===kind);
+  });
+  if(!S.mapCombo.length) S.mapCombo=['sgcn'];
 }
 // ---------- per-unit/per-taxon data accessors (SGCN, State ESA, eBird abundance) ----------
 function availableSeasonsForCurrentTaxa(){
@@ -759,29 +785,33 @@ if(metric==='usfs'){
   return table ? Object.keys(table).map(uiStr=>+uiStr) : [];
 }
 function mapMetricTaxonVerb(){
-  if(S.mapMetric==='esa') return 'have State ESA listings for each';
-  if(S.mapMetric==='fedEsa') return 'have Federal ESA listings for each';
-  if(S.mapMetric==='bcc') return 'have BCC-listed species';
-  if(S.mapMetric==='ccs') return 'include each BCC species and contribute to its combined CCS total';
-  if(S.mapMetric==='ccsArea') return 'include each BCC species and contribute to its area-adjusted CCS total';
-  if(S.mapMetric==='iucn') return 'carry IUCN concern status in each atlas state';
-  if(S.mapMetric==='r2r') return 'carry R2R concern designations in each atlas state';
-  if(S.mapMetric==='blm') return 'appear on BLM special-status lists relevant to each atlas state';
-  if(S.mapMetric==='usfs') return 'appear on USFS sensitive-species lists relevant to each atlas state';
-  if(S.mapMetric!=='sgcn') return 'have '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for each';
+  if(S.mapCombo.length>1) return 'match at least one of the selected frameworks ('+S.mapCombo.map(k=>defForMapKey(k).shortLabel).join(', ')+') for each';
+  const key=S.mapCombo[0];
+  if(key==='esa') return 'have State ESA listings for each';
+  if(key==='fedEsa') return 'have Federal ESA listings for each';
+  if(key==='bcc') return 'have BCC-listed species';
+  if(key==='ccs') return 'include each BCC species and contribute to its combined CCS total';
+  if(key==='ccsArea') return 'include each BCC species and contribute to its area-adjusted CCS total';
+  if(key==='iucn') return 'carry IUCN concern status in each atlas state';
+  if(key==='r2r') return 'carry R2R concern designations in each atlas state';
+  if(key==='blm') return 'appear on BLM special-status lists relevant to each atlas state';
+  if(key==='usfs') return 'appear on USFS sensitive-species lists relevant to each atlas state';
+  if(key!=='sgcn') return 'have '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for each';
   return 'designate each';
 }
 function mapMetricUnitPhrase(){
-  if(S.mapMetric==='esa') return 'have State ESA data for this bird';
-  if(S.mapMetric==='fedEsa') return 'have a Federal ESA listing for this bird';
-  if(S.mapMetric==='bcc') return 'include this bird as BCC';
-  if(S.mapMetric==='ccs') return 'include this BCC bird and contribute its CCS value';
-  if(S.mapMetric==='ccsArea') return 'include this BCC bird and contribute its area-adjusted CCS value';
-  if(S.mapMetric==='iucn') return 'include this bird as an IUCN concern taxon';
-  if(S.mapMetric==='r2r') return 'include this bird as an R2R concern taxon';
-  if(S.mapMetric==='blm') return 'include this bird on the relevant BLM list for this state';
-  if(S.mapMetric==='usfs') return 'include this bird on the relevant USFS regional list for this state';
-  if(S.mapMetric==='sgcn') return 'list this bird as SGCN';
+  if(S.mapCombo.length>1) return 'match at least one selected framework for this bird';
+  const key=S.mapCombo[0];
+  if(key==='esa') return 'have State ESA data for this bird';
+  if(key==='fedEsa') return 'have a Federal ESA listing for this bird';
+  if(key==='bcc') return 'include this bird as BCC';
+  if(key==='ccs') return 'include this BCC bird and contribute its CCS value';
+  if(key==='ccsArea') return 'include this BCC bird and contribute its area-adjusted CCS value';
+  if(key==='iucn') return 'include this bird as an IUCN concern taxon';
+  if(key==='r2r') return 'include this bird as an R2R concern taxon';
+  if(key==='blm') return 'include this bird on the relevant BLM list for this state';
+  if(key==='usfs') return 'include this bird on the relevant USFS regional list for this state';
+  if(key==='sgcn') return 'list this bird as SGCN';
   return 'have '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird';
 }
 function tableChipSummaryText(){
@@ -799,7 +829,12 @@ function tableChipSummaryText(){
   return parts.length ? parts.join(' + ')+' species' : null;
 }
 function isFocusedChoropleth(){
-  return S.focus!=null && !['sgcn','esa','fedEsa','bcc','ccs','ccsArea','iucn','r2r','blm','usfs'].includes(S.mapMetric);
+  return S.focus!=null && S.mapCombo.length===1 && !STANDALONE_MAP_KEYS.includes(S.mapCombo[0]);
+}
+function unitIdsForTaxonCombo(ti, keys){
+  const set=new Set();
+  (keys||[]).forEach(k=>unitIdsForTaxonMetric(ti,k).forEach(ui=>set.add(ui)));
+  return [...set];
 }
 function isSgcnListed(ti,ui){
   const p=PRESENCE()[ti]; return !!p && p.indexOf(ui)>=0;
@@ -820,11 +855,11 @@ function unionRowsForUnit(ui){
     const r2r=r2rForTaxon(ti);
     const blm=blmListedInUnit(ti,ui);
     const usfs=usfsListedInUnit(ti,ui);
-    const iucnListed = S.mapMetric==='iucn' && iucnListedInUnit(ti,ui);
-    const r2rListed = S.mapMetric==='r2r' && r2rListedInUnit(ti,ui);
-    const blmListed = S.mapMetric==='blm' && blm;
-    const usfsListed = S.mapMetric==='usfs' && usfs;
-    const ccsListed = (S.mapMetric==='ccs' || S.mapMetric==='ccsArea') && ccsListedInUnit(ti,ui);
+    const iucnListed = S.mapCombo.includes('iucn') && iucnListedInUnit(ti,ui);
+    const r2rListed = S.mapCombo.includes('r2r') && r2rListedInUnit(ti,ui);
+    const blmListed = S.mapCombo.includes('blm') && blm;
+    const usfsListed = S.mapCombo.includes('usfs') && usfs;
+    const ccsListed = (S.mapCombo.includes('ccs') || S.mapCombo.includes('ccsArea')) && ccsListedInUnit(ti,ui);
     if(sgcn || esa || ab || fedEsa || bcc || iucnListed || r2rListed || blmListed || usfsListed || ccsListed) out.push({ti, sgcn, esa, ab, fedEsa, bcc, ccs, iucn, r2r, blm, usfs});
   }
   return out;
@@ -950,10 +985,9 @@ function wireUniHeadAndChips(panelEl, onChange){
   }));
   panelEl.querySelectorAll('.seasonchip').forEach(b=>b.addEventListener('click',()=>{
     S.season=b.dataset.seasonkey;
-    if(!['sgcn','esa','fedEsa','bcc','ccs','ccsArea','iucn','r2r','blm','usfs'].includes(S.mapMetric)){
-      const [,kind='pop']=S.mapMetric.split(':');
-      S.mapMetric=S.season+':'+kind;
-    }
+    S.mapCombo=Array.from(new Set(S.mapCombo.map(key=>
+      STANDALONE_MAP_KEYS.includes(key) ? key : (S.season+':'+key.split(':')[1])
+    )));
     onChange();
   }));
 }
@@ -1105,7 +1139,7 @@ function buildScale(counts){
     min=Math.max(0,min-1);
     max=max+1;
   }
-  colorScale = (S.mapMetric==='ccsArea' && uniquePositiveCount>1)
+  colorScale = (S.mapCombo.length===1 && S.mapCombo[0]==='ccsArea' && uniquePositiveCount>1)
     ? d3.scaleQuantile().domain(positives).range(RAMP)
     : d3.scaleQuantize().domain([min,max]).range(RAMP);
   return max;
@@ -1113,7 +1147,7 @@ function buildScale(counts){
 function focusedMetricValues(){
   if(!isFocusedChoropleth()) return null;
   const values=new Array(UNITS().length).fill(0);
-  const [seasonKey,kind]=S.mapMetric.split(':');
+  const [seasonKey,kind]=S.mapCombo[0].split(':');
   const idx = kind==='occ' ? 1 : 0;
   const ab=curLevel().abundance[S.focus];
   const table=ab && ab[seasonKey];
@@ -1133,16 +1167,16 @@ function fillFor(ui){
     return n>0 ? colorScale(n) : EMPTY;
   }
   if(S.focus!=null){
-    return unitIdsForTaxonMetric(S.focus,S.mapMetric).indexOf(ui)>=0 ? SIGNAL : ABSENT;
+    return unitIdsForTaxonCombo(S.focus,S.mapCombo).indexOf(ui)>=0 ? SIGNAL : ABSENT;
   }
   const n=curCounts[ui];
   return n>0 ? colorScale(n) : EMPTY;
 }
 function hoverSet(){
-  return S.hoverTi!=null ? new Set(unitIdsForTaxonMetric(S.hoverTi,S.mapMetric)) : null;
+  return S.hoverTi!=null ? new Set(unitIdsForTaxonCombo(S.hoverTi,S.mapCombo)) : null;
 }
 function updateMapPreview(){
-  const focusSet = S.focus!=null ? new Set(unitIdsForTaxonMetric(S.focus,S.mapMetric)) : null;
+  const focusSet = S.focus!=null ? new Set(unitIdsForTaxonCombo(S.focus,S.mapCombo)) : null;
   const previewSet = S.focus==null ? hoverSet() : null;
   const outlinedUnits = previewSet;
 
@@ -1222,8 +1256,11 @@ function renderLegend(max){
   RAMP.forEach(c=>{const i=document.createElement('i');i.style.background=c;ramp.appendChild(i);});
   const ticks=document.getElementById('ticks'); ticks.innerHTML='';
   const ext=RAMP.map(c=>colorScale.invertExtent(c)[1]);
-  ext.forEach((v,k)=>{const s=document.createElement('span');s.textContent=(m.unit==='pct-sum'?v.toFixed(0)+'%':((m.unit==='ccs-sum'||m.unit==='ccs-density')?formatCcs(v):Math.round(v)));ticks.appendChild(s);});
-  note.textContent = isFocusedChoropleth()
+  ext.forEach((v,k)=>{const s=document.createElement('span');s.textContent=(m.unit==='pct-sum'?v.toFixed(0)+'%':((m.unit==='ccs-sum'||m.unit==='ccs-density')?formatCcs(v):(Number.isInteger(v)?v:v.toFixed(1))));ticks.appendChild(s);});
+  note.textContent = m.combo
+    ? ('Each state total is the sum of '+m.defs.map(d=>d.shortLabel).join(' + ')+' for that state \u2014 a species counted under more than one selected framework is counted once per framework, not deduplicated.'+
+       (m.unit==='mixed' ? ' These frameworks use different units (counts, CCS points, and/or % shares), so the combined total is a planning signal, not a single consistent measure.' : ''))
+    : isFocusedChoropleth()
     ? (m.kind==='occ'
         ? 'Values show this bird\'s modeled percent of state area occupied in '+m.shortLabel.toLowerCase()+'.'
         : 'Values show this bird\'s modeled percent of population in each state during '+m.shortLabel.toLowerCase()+'.')
@@ -1252,47 +1289,54 @@ function renderMapMetricSeg(){
   if(!seg) return;
   const availSeasonKeys=availableMapMetrics(); // array of season keys with data under current filters
   const availSeasons=(curLevel().seasons||[]).filter(s=>availSeasonKeys.includes(s.key));
-  const isStandalone = ['sgcn','esa','fedEsa','bcc','ccs','ccsArea','iucn','r2r','blm','usfs'].includes(S.mapMetric);
-  const curSeasonKey = isStandalone ? null : S.mapMetric.split(':')[0];
-  const curKind = isStandalone ? null : S.mapMetric.split(':')[1];
+  const activeSeasonalKeys=S.mapCombo.filter(k=>!STANDALONE_MAP_KEYS.includes(k));
+  const activeSeasonKeySet=new Set(activeSeasonalKeys.map(k=>k.split(':')[0]));
+  const activeKinds=new Set(activeSeasonalKeys.map(k=>k.split(':')[1]));
+  if(activeKinds.size===1) S.mapKind=[...activeKinds][0];
+  if(!S.mapKind) S.mapKind='pop';
+  const curKind=S.mapKind;
 
+  const stdLabels={sgcn:'SGCN', esa:'State ESA', fedEsa:'Fed ESA', bcc:'BCC', ccs:'CCS', ccsArea:'CCS / area', iucn:'IUCN', r2r:'R2R', blm:'BLM', usfs:'USFS'};
   let h='<div class="mapmetric-row"><span class="chiplbl">Show</span>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="sgcn" aria-pressed="'+(S.mapMetric==='sgcn')+'">SGCN</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="esa" aria-pressed="'+(S.mapMetric==='esa')+'">State ESA</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="fedEsa" aria-pressed="'+(S.mapMetric==='fedEsa')+'">Fed ESA</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="bcc" aria-pressed="'+(S.mapMetric==='bcc')+'">BCC</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="ccs" aria-pressed="'+(S.mapMetric==='ccs')+'">CCS</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="ccsArea" aria-pressed="'+(S.mapMetric==='ccsArea')+'">CCS / area</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="iucn" aria-pressed="'+(S.mapMetric==='iucn')+'">IUCN</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="r2r" aria-pressed="'+(S.mapMetric==='r2r')+'">R2R</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="blm" aria-pressed="'+(S.mapMetric==='blm')+'">BLM</button>';
-  h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="usfs" aria-pressed="'+(S.mapMetric==='usfs')+'">USFS</button>';
+  STANDALONE_MAP_KEYS.forEach(key=>{
+    h+='<button type="button" class="chip mapmetricchip" data-mapstandalone="'+key+'" aria-pressed="'+S.mapCombo.includes(key)+'">'+stdLabels[key]+'</button>';
+  });
   h+='</div>';
   h+='<div class="mapmetric-row"><span class="chiplbl">Season</span>';
   availSeasons.forEach(s=>{
-    h+='<button type="button" class="chip mapmetricchip" data-mapseason="'+s.key+'" aria-pressed="'+(s.key===curSeasonKey)+'">'+s.label+'</button>';
+    h+='<button type="button" class="chip mapmetricchip" data-mapseason="'+s.key+'" aria-pressed="'+activeSeasonKeySet.has(s.key)+'">'+s.label+'</button>';
   });
   h+='</div>';
-  h+='<div class="mapmetric-row mapmetric-kind'+(curSeasonKey?'':' disabled')+'"><span class="chiplbl">Measure</span>';
+  h+='<div class="mapmetric-row mapmetric-kind"><span class="chiplbl">Measure</span>';
   MAP_KINDS.forEach(k=>{
-    h+='<button type="button" class="chip mapmetricchip kind" data-mapkind="'+k.key+'" aria-pressed="'+(k.key===curKind)+'"'+(curSeasonKey?'':' disabled')+'>'+k.shortLabel+'</button>';
+    h+='<button type="button" class="chip mapmetricchip kind" data-mapkind="'+k.key+'" aria-pressed="'+(k.key===curKind)+'">'+k.shortLabel+'</button>';
   });
   h+='</div>';
+  if(S.mapCombo.length>1){
+    h+='<div class="mapmetric-row mapcombo-note"><span class="chiplbl">Combining</span><span class="combo-txt">'+
+       esc(S.mapCombo.map(k=>defForMapKey(k).shortLabel).join(' + '))+' \u2014 values summed per state</span></div>';
+  }
   seg.innerHTML=h;
 
   seg.querySelectorAll('[data-mapstandalone]').forEach(b=>b.addEventListener('click',()=>{
-    S.mapMetric=b.dataset.mapstandalone;
+    const key=b.dataset.mapstandalone;
+    const i=S.mapCombo.indexOf(key);
+    if(i>=0) S.mapCombo.splice(i,1); else S.mapCombo.push(key);
     render();
   }));
   seg.querySelectorAll('[data-mapseason]').forEach(b=>b.addEventListener('click',()=>{
     const seasonKey=b.dataset.mapseason;
-    const kind=curKind||'pop';
-    S.mapMetric=seasonKey+':'+kind;
+    const idx=S.mapCombo.findIndex(k=>!STANDALONE_MAP_KEYS.includes(k) && k.split(':')[0]===seasonKey);
+    if(idx>=0) S.mapCombo.splice(idx,1);
+    else S.mapCombo.push(seasonKey+':'+S.mapKind);
     render();
   }));
   seg.querySelectorAll('[data-mapkind]').forEach(b=>b.addEventListener('click',()=>{
-    if(!curSeasonKey) return; // kind chips are inert until a season is chosen
-    S.mapMetric=curSeasonKey+':'+b.dataset.mapkind;
+    const newKind=b.dataset.mapkind;
+    S.mapCombo=Array.from(new Set(S.mapCombo.map(key=>
+      STANDALONE_MAP_KEYS.includes(key) ? key : (key.split(':')[0]+':'+newKind)
+    )));
+    S.mapKind=newKind;
     render();
   }));
 }
@@ -1340,7 +1384,7 @@ function taxaListHTML(seg){
   const reachByTaxon = new Map();
   const idx = taxa.map((t,i)=>i).filter(i=>{
     if(!taxaPass(taxa[i])) return false;
-    const reach=unitIdsForTaxonMetric(i,S.mapMetric);
+    const reach=unitIdsForTaxonCombo(i,S.mapCombo);
     reachByTaxon.set(i,reach);
     return reach.length>0;
   });
@@ -1458,7 +1502,7 @@ function panelSpecies(ti){
 
   function draw(){
     const seasonLbl=(lv.seasons.find(s=>s.key===S.season)||{}).label || S.season;
-    const metricUnits=unitIdsForTaxonMetric(ti,S.mapMetric);
+    const metricUnits=unitIdsForTaxonCombo(ti,S.mapCombo);
     const allRows=metricUnits.map(ui=>({
       ui, nameKey: units[ui].name.toLowerCase(),
       sgcn: isSgcnListed(ti,ui), esa: stateEsaFor(ti,ui), ab: abundancePairFor(ti,ui), fedEsa: fedEsaInUnit(ti,ui), ccs: ccsForTaxon(ti), iucn: iucnForTaxon(ti), r2r: r2rForTaxon(ti), blm: blmListedInUnit(ti,ui), usfs: usfsListedInUnit(ti,ui), bcc: bccNameInUnit(TAXA()[ti].c,ui)
@@ -1574,55 +1618,65 @@ function showTip(e,ui){
       const val=activeMapValues()[ui];
       const measureLbl = mapMetricDef().kind==='occ' ? '% state occupied' : '% population';
       body='<b>'+u.name+'</b><br><span class="tn">'+(val>0 ? (val.toFixed(1)+' '+measureLbl) : ('no '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird'))+'</span>';
+    } else if(S.mapCombo.length>1){
+      const has=unitIdsForTaxonCombo(S.focus,S.mapCombo).indexOf(ui)>=0;
+      body='<b>'+u.name+'</b><br><span class="tn">'+(has ? ('matches at least one selected framework for '+TAXA()[S.focus].c) : 'matches none of the selected frameworks for this bird')+'</span>';
     } else {
-      const has=unitIdsForTaxonMetric(S.focus,S.mapMetric).indexOf(ui)>=0;
-      const metricLbl = S.mapMetric==='esa' ? 'has a State ESA listing for ' :
-        (S.mapMetric==='fedEsa' ? 'has a Federal ESA listing for ' :
-        (S.mapMetric==='ccs' ? 'includes and counts the CCS value for ' :
-        (S.mapMetric==='ccsArea' ? 'includes and counts the area-adjusted CCS value for ' :
-        (S.mapMetric==='iucn' ? 'includes this IUCN concern taxon in ' :
-        (S.mapMetric==='r2r' ? 'includes this R2R-designated taxon in ' :
-        (S.mapMetric==='blm' ? 'includes this BLM-listed taxon in ' :
-        (S.mapMetric==='usfs' ? 'includes this USFS-listed taxon in ' :
-        (S.mapMetric==='sgcn' ? 'lists ' : 'has '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for '))))))));
-      const missingLbl = S.mapMetric==='esa' ? 'no State ESA listing for this bird' :
-        (S.mapMetric==='fedEsa' ? 'no Federal ESA listing for this bird' :
-        (S.mapMetric==='ccs' ? 'does not include this BCC bird or it has no CCS value' :
-        (S.mapMetric==='ccsArea' ? 'does not include this BCC bird or it has no area-adjusted CCS value' :
-        (S.mapMetric==='iucn' ? 'this bird is not counted here as an IUCN concern taxon' :
-        (S.mapMetric==='r2r' ? 'this bird is not counted here as an R2R-designated taxon' :
-        (S.mapMetric==='blm' ? 'this bird is not counted here as a BLM-listed taxon' :
-        (S.mapMetric==='usfs' ? 'this bird is not counted here as a USFS-listed taxon' :
-        (S.mapMetric==='sgcn' ? 'not listed' : 'no '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird'))))))));
+      const key=S.mapCombo[0];
+      const has=unitIdsForTaxonMetric(S.focus,key).indexOf(ui)>=0;
+      const metricLbl = key==='esa' ? 'has a State ESA listing for ' :
+        (key==='fedEsa' ? 'has a Federal ESA listing for ' :
+        (key==='ccs' ? 'includes and counts the CCS value for ' :
+        (key==='ccsArea' ? 'includes and counts the area-adjusted CCS value for ' :
+        (key==='iucn' ? 'includes this IUCN concern taxon in ' :
+        (key==='r2r' ? 'includes this R2R-designated taxon in ' :
+        (key==='blm' ? 'includes this BLM-listed taxon in ' :
+        (key==='usfs' ? 'includes this USFS-listed taxon in ' :
+        (key==='sgcn' ? 'lists ' : 'has '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for '))))))));
+      const missingLbl = key==='esa' ? 'no State ESA listing for this bird' :
+        (key==='fedEsa' ? 'no Federal ESA listing for this bird' :
+        (key==='ccs' ? 'does not include this BCC bird or it has no CCS value' :
+        (key==='ccsArea' ? 'does not include this BCC bird or it has no area-adjusted CCS value' :
+        (key==='iucn' ? 'this bird is not counted here as an IUCN concern taxon' :
+        (key==='r2r' ? 'this bird is not counted here as an R2R-designated taxon' :
+        (key==='blm' ? 'this bird is not counted here as a BLM-listed taxon' :
+        (key==='usfs' ? 'this bird is not counted here as a USFS-listed taxon' :
+        (key==='sgcn' ? 'not listed' : 'no '+mapMetricDef().shortLabel.toLowerCase()+' abundance data for this bird'))))))));
       body='<b>'+u.name+'</b><br><span class="tn">'+(has?(metricLbl+TAXA()[S.focus].c):missingLbl)+'</span>';
     }
   } else {
     const m=mapMetricDef();
     let valTxt;
-    if(S.mapMetric==='sgcn'){
-      const noun = S.rank==='all'?'taxa':(S.rank==='sp'?'species':'subspecies');
-      valTxt = curCounts[ui]+' '+noun;
-    } else if(S.mapMetric==='esa'){
-      valTxt = curCounts[ui]+' State ESA listing'+(curCounts[ui]===1?'':'s');
-    } else if(S.mapMetric==='fedEsa'){
-      valTxt = curCounts[ui]+' Federal ESA listing'+(curCounts[ui]===1?'':'s');
-    } else if(S.mapMetric==='bcc'){
-      valTxt = curCounts[ui]+' BCC species';
-    } else if(S.mapMetric==='ccs'){
-      valTxt = formatCcs(curCounts[ui])+' combined CCS points';
-    } else if(S.mapMetric==='ccsArea'){
-      valTxt = formatCcs(curCounts[ui])+' combined CCS points per 100k sq km';
-    } else if(S.mapMetric==='iucn'){
-      valTxt = curCounts[ui]+' IUCN concern taxa';
-    } else if(S.mapMetric==='r2r'){
-      valTxt = curCounts[ui]+' R2R concern taxa';
-    } else if(S.mapMetric==='blm'){
-      valTxt = curCounts[ui]+' BLM-listed taxa';
-    } else if(S.mapMetric==='usfs'){
-      valTxt = curCounts[ui]+' USFS-listed taxa';
+    if(S.mapCombo.length>1){
+      valTxt = (m.unit==='count' ? curCounts[ui]+' combined listings' : (Number.isInteger(curCounts[ui])?curCounts[ui]:curCounts[ui].toFixed(1))+' combined total')+
+        (m.unit==='mixed' ? ' (mixed units \u2014 see legend note)' : '');
     } else {
-      const measureLbl = m.kind==='occ' ? 'combined state-area share' : 'combined population share';
-      valTxt = curCounts[ui].toFixed(1)+'% '+measureLbl+' · '+m.shortLabel.toLowerCase();
+      const key=S.mapCombo[0];
+      if(key==='sgcn'){
+        const noun = S.rank==='all'?'taxa':(S.rank==='sp'?'species':'subspecies');
+        valTxt = curCounts[ui]+' '+noun;
+      } else if(key==='esa'){
+        valTxt = curCounts[ui]+' State ESA listing'+(curCounts[ui]===1?'':'s');
+      } else if(key==='fedEsa'){
+        valTxt = curCounts[ui]+' Federal ESA listing'+(curCounts[ui]===1?'':'s');
+      } else if(key==='bcc'){
+        valTxt = curCounts[ui]+' BCC species';
+      } else if(key==='ccs'){
+        valTxt = formatCcs(curCounts[ui])+' combined CCS points';
+      } else if(key==='ccsArea'){
+        valTxt = formatCcs(curCounts[ui])+' combined CCS points per 100k sq km';
+      } else if(key==='iucn'){
+        valTxt = curCounts[ui]+' IUCN concern taxa';
+      } else if(key==='r2r'){
+        valTxt = curCounts[ui]+' R2R concern taxa';
+      } else if(key==='blm'){
+        valTxt = curCounts[ui]+' BLM-listed taxa';
+      } else if(key==='usfs'){
+        valTxt = curCounts[ui]+' USFS-listed taxa';
+      } else {
+        const measureLbl = m.kind==='occ' ? 'combined state-area share' : 'combined population share';
+        valTxt = curCounts[ui].toFixed(1)+'% '+measureLbl+' · '+m.shortLabel.toLowerCase();
+      }
     }
     body='<b>'+u.name+'</b><br><span class="tn">'+valTxt+'</span>';
   }
@@ -1674,7 +1728,7 @@ function updateHash(){
     if(S.rank!=='all')p.set('rank',S.rank);
     if(S.group!=='all')p.set('group',S.group);
     if(S.season!=='breeding')p.set('season',S.season);
-    if(S.mapMetric!=='sgcn')p.set('map',S.mapMetric);
+    if(S.mapCombo.length!==1 || S.mapCombo[0]!=='sgcn') p.set('map',S.mapCombo.join(','));
     if(S.focus!=null){const t=TAXA()[S.focus]; p.set('bird', t.s+(t.r?('|'+t.r):''));}
     else if(S.pin!=null)p.set('unit',UNITS()[S.pin].name);
     const h=p.toString();
@@ -1690,12 +1744,13 @@ function readHash(){
   if(p.get('group')&&curLevel().groups.includes(p.get('group'))){S.group=p.get('group');}
   if(p.get('season'))S.season=p.get('season');
   if(p.get('map')){
-    const mv=p.get('map');
-    if(['sgcn','esa','fedEsa','bcc','ccs','ccsArea','iucn','r2r','blm','usfs'].includes(mv)) S.mapMetric=mv;
-    else {
+    const keys=p.get('map').split(',').map(s=>s.trim()).filter(Boolean);
+    const valid=keys.filter(mv=>{
+      if(STANDALONE_MAP_KEYS.includes(mv)) return true;
       const [seasonKey,kind]=mv.split(':');
-      if((curLevel().seasons||[]).some(s=>s.key===seasonKey) && MAP_KINDS.some(k=>k.key===kind)) S.mapMetric=mv;
-    }
+      return (curLevel().seasons||[]).some(s=>s.key===seasonKey) && MAP_KINDS.some(k=>k.key===kind);
+    });
+    if(valid.length) S.mapCombo=Array.from(new Set(valid));
   }
   if(p.get('bird')){const [sci,r]=p.get('bird').split('|');
     const ti=TAXA().findIndex(t=>t.s===sci&&(r?t.r===r:!t.r)); if(ti>=0){S.focus=ti;q.value=TAXA()[ti].c;toggleClear(true);}}
